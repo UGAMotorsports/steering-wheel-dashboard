@@ -1,0 +1,39 @@
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:23:1:MCP2515::MCP2515(SPI_HandleTypeDef*, uint32_t, GPIO_TypeDef*, uint8_t)	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:35:6:void MCP2515::SPI_Tx(uint8_t)	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:41:9:uint8_t MCP2515::SPI_Rx()	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:48:6:void MCP2515::startSPI()	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:52:6:void MCP2515::endSPI()	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:56:16:MCP2515::ERROR MCP2515::reset()	5
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:106:9:uint8_t MCP2515::readRegister(REGISTER)	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:117:6:void MCP2515::readRegisters(REGISTER, uint8_t*, uint8_t)	2
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:129:6:void MCP2515::setRegister(REGISTER, uint8_t)	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:138:6:void MCP2515::setRegisters(REGISTER, const uint8_t*, uint8_t)	2
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:149:6:void MCP2515::modifyRegister(REGISTER, uint8_t, uint8_t)	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:159:9:uint8_t MCP2515::getStatus()	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:169:16:MCP2515::ERROR MCP2515::setConfigMode()	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:174:16:MCP2515::ERROR MCP2515::setListenOnlyMode()	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:179:16:MCP2515::ERROR MCP2515::setSleepMode()	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:184:16:MCP2515::ERROR MCP2515::setLoopbackMode()	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:189:16:MCP2515::ERROR MCP2515::setNormalMode()	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:194:16:MCP2515::ERROR MCP2515::setMode(CANCTRL_REQOP_MODE)	4
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:215:16:MCP2515::ERROR MCP2515::setBitrate(CAN_SPEED)	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:220:16:MCP2515::ERROR MCP2515::setBitrate(CAN_SPEED, CAN_CLOCK)	46
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:508:16:MCP2515::ERROR MCP2515::setClkOut(CAN_CLKOUT)	2
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:530:6:void MCP2515::prepareId(uint8_t*, bool, uint32_t)	2
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:550:16:MCP2515::ERROR MCP2515::setFilterMask(MASK, bool, uint32_t)	4
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:573:16:MCP2515::ERROR MCP2515::setFilter(RXF, bool, uint32_t)	8
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:600:16:MCP2515::ERROR MCP2515::sendMessage(TXBn, const can_frame*)	5
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:631:16:MCP2515::ERROR MCP2515::sendMessage(const can_frame*)	4
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:650:16:MCP2515::ERROR MCP2515::readMessage(RXBn, can_frame*)	4
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:687:16:MCP2515::ERROR MCP2515::readMessage(can_frame*)	3
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:703:6:bool MCP2515::checkReceive()	2
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:713:6:bool MCP2515::checkError()	2
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:724:9:uint8_t MCP2515::getErrorFlags()	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:729:6:void MCP2515::clearRXnOVRFlags()	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:734:9:uint8_t MCP2515::getInterrupts()	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:739:6:void MCP2515::clearInterrupts()	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:744:9:uint8_t MCP2515::getInterruptMask()	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:749:6:void MCP2515::clearTXInterrupts()	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:754:6:void MCP2515::clearRXnOVR()	2
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:765:6:void MCP2515::clearMERR()	1
+../Core/Src/stm32-hal-mcp2515/mcp2515.cpp:772:6:void MCP2515::clearERRIF()	1

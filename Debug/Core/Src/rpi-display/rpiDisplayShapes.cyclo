@@ -1,0 +1,26 @@
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:15:6:void startTransaction()	1
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:19:6:void endTransaction()	1
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:23:6:void dataOrRegister(uint8_t)	2
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:31:6:void commandAndData(uint16_t, uint16_t*, unsigned int)	2
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:45:6:void startCommand(uint16_t)	1
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:51:6:void transmitRepeatedData(uint16_t, unsigned int)	2
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:58:6:void transmitSingleData(uint16_t)	1
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:63:6:void endCommand()	1
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:67:6:void resetScreen()	1
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:76:6:void initializeScreen()	1
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:145:6:void clearScreen(uint16_t)	1
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:164:6:void modifySpace(uint16_t, uint16_t, uint16_t, uint16_t)	1
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:176:6:void clearScreenfast(uint16_t)	4
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:192:6:void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef*)	2
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:200:6:void fillArea(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t)	1
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:207:6:void drawHLine(uint16_t, uint16_t, uint16_t, uint16_t)	1
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:211:6:void drawVLine(uint16_t, uint16_t, uint16_t, uint16_t)	1
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:215:6:void drawPoint(uint16_t, uint16_t, uint16_t)	1
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:224:6:void drawRectangleFilled(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t)	1
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:228:6:void drawRectangleOutline(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t)	1
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:245:5:int checkPointInEllipse(int, int, int, int, int, int)	1
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:255:6:void drawEllipseFilled(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t)	4
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:269:6:void drawEllipseOutline(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t)	4
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:288:6:void getStringCenter(uint16_t*, uint16_t*, char*, const GFXfont*)	2
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:301:10:uint16_t drawChar(char, const GFXfont*, uint16_t, uint16_t, uint8_t)	6
+../Core/Src/rpi-display/rpiDisplayShapes.cpp:330:9:uint8_t drawString(char*, const GFXfont*, uint16_t, uint16_t, uint8_t)	6
