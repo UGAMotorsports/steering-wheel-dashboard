@@ -1,0 +1,3 @@
+[submodule "Core/Src/stm32-hal-mcp2515"]
+	path = Core/Src/stm32-hal-mcp2515
+	url = https://github.com/Gradar66/stm32-hal-mcp2515
