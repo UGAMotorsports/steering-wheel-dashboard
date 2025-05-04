@@ -9,6 +9,7 @@
 #define SHIFTLIGHTS_H_
 
 #include "stm32f4xx_hal.h"
+#include "main.h"
 
 #define LED_COUNT 16    // Number of WS2812B LEDs
 #define BITS_PER_LED 24  // 8 Red + 8 Green + 8 Blue

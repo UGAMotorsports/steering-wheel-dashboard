@@ -30,6 +30,7 @@
 #include "rpi-display/rpiDisplayShapes.h"
 #include "rpi-display/FreeMonoBold24pt7b.h"
 #include "rpi-display/FreeSans18pt7b.h"
+#include "rpi-display/rpiSceneBuilderUser.h"
 #include "shiftLights.h"
 #include <stdio.h>
 
@@ -109,37 +110,38 @@ int main(void)
   MX_SPI2_Init();
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-  for (int i = 0; i < 5; i++) {
-	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, SET);
-	  HAL_Delay(100);
-	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, RESET);
-	  HAL_Delay(100);
-  }
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  resetScreen();
-  initializeScreen();
 
-  char *uga = "uga motorsports";
-  drawString(uga, FREE_SANS_18PT7B, 240, 160, NO_FLIP_OBJECT | CENTER_OBJECT);
-  HAL_Delay(400);
-  clearScreenfast(0x0000);
   initializeMCP2515();
   uint8_t ledcolors[3 * 16];
   uint16_t ledbytes[(16 * 24) + 150];
-  int G1[12] = {834, 1668, 2502, 3336, 4170, 5004, 5838, 6672, 7506, 8340,
-  9174, 10008};
+  int G1[12] = {500, 2500, 4000, 5000, 6000, 7000, 8000, 8500, 9000, 9500,
+  10000, 10500};
   shiftLightsInit(&htim4, TIM_CHANNEL_1, ledcolors, ledbytes);
-  HAL_Delay(500);
+  setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 0);
+  setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 1);
+  setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 14);
+  setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 15);
+
+  resetScreen();
+  initializeScreen();
+  dosplashscene();
   startUp(&htim4, TIM_CHANNEL_1, ledcolors, ledbytes);
+  HAL_Delay(200);
+
+  char result[20] = "null"; //rpm
+  char result2[20] = "null";//temp
+  char result3[20] = "null";//gear
+  settempdata(result2);
+  setgeardata(result3);
+  setrpmdata(result);
+  domainscreen();
 
   struct can_frame frame;
-  char rpmresult[20] = "not recieved rpm";
-  char tempresult[20] = "not received temp";
 
   while (1)
   {
@@ -148,19 +150,25 @@ int main(void)
 		  if (frame.can_id == 1512) {
 			  uint16_t rpm = (((uint16_t)frame.data[2]) << 8) + frame.data[3];
 			  UpdateShiftLights(&htim4, TIM_CHANNEL_1, ledcolors, ledbytes, rpm, G1);
-			  itoa(rpm, rpmresult, 10);
-		  } else if (frame.can_id == 1513){
+
+			  itoa(rpm, (char*)(result), 10);
+			  setrpmdata(result);
 			  uint16_t temp = (((uint16_t)frame.data[4]) << 8) + frame.data[5];
-			  itoa(temp, tempresult, 10);
+			  if (temp > 2150) {
+				setColor(&htim4, TIM_CHANNEL_1, 0, 255, 0, ledcolors, ledbytes, 15);
+			  } else {
+				setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 15);
+			  }
+			  itoa(temp, result2, 10);
+			  settempdata(result2);
+		  } else if (frame.can_id == 1520 + 33) {
+			  uint8_t gear = ((uint8_t)frame.data[6]);
+			  itoa(gear, result3, 10);
+			  setgeardata(result3);
 		  }
 	  }
 
-
-	  clearScreenfast(0x0000);
-	  drawString(rpmresult, FREE_MONO_BOLD_24PT7B, 240, 160, NO_FLIP_OBJECT | CENTER_OBJECT);
-	  drawString(tempresult, FREE_SANS_18PT7B, 240, 80, NO_FLIP_OBJECT | CENTER_OBJECT);
-	  //drawString(tempresult, font_FreeSans18pt7b, 240, 180, NO_FLIP_OBJECT | CENTER_OBJECT);
-
+	  domainscreen();
 //	  CDC_Transmit_FS (status, sizeof(status));
     /* USER CODE END WHILE */
 

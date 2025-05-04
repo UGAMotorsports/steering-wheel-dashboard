@@ -1,2 +1,50 @@
-../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:13:1:DisplayObject::DisplayObject(uint8_t, uint8_t (*)(uint16_t, uint16_t))	1
-../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:18:6:void createobject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:16:1:Scene::Scene(DisplayObject**, uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:20:6:void Scene::setScene(DisplayObject**, uint8_t)	3
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:33:6:void Scene::drawScene()	9
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:68:1:DisplayObject::~DisplayObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:68:1:virtual DisplayObject::~DisplayObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:70:6:void DisplayObject::resetChangeFlag()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:74:6:void DisplayObject::redrawObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:78:10:uint16_t DisplayObject::getxpos()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:82:6:void DisplayObject::setxpos(uint16_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:86:10:uint16_t DisplayObject::getypos()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:90:6:void DisplayObject::setypos(uint16_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:94:9:uint8_t DisplayObject::getpriority()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:98:6:void DisplayObject::setpriority(uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:102:9:uint8_t DisplayObject::getChangeFlag()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:14:7:DisplayObject::DisplayObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:110:1:StringObject::StringObject(uint16_t, uint16_t, uint16_t, const GFXfont*, uint8_t, char*, uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:121:10:virtual uint16_t StringObject::drawIntoFramebuffer(uint16_t*, uint16_t, uint16_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:125:6:void StringObject::updateString(char*, uint8_t, uint16_t, const GFXfont*, uint16_t, uint16_t, uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:140:1:FilledRectObject::FilledRectObject(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t, uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:151:10:virtual uint16_t FilledRectObject::drawIntoFramebuffer(uint16_t*, uint16_t, uint16_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:156:6:void FilledRectObject::updateRect(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:170:1:OutlineRectObject::OutlineRectObject(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t, uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:181:10:virtual uint16_t OutlineRectObject::drawIntoFramebuffer(uint16_t*, uint16_t, uint16_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:186:6:void OutlineRectObject::updateRect(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:200:1:FilledEllipseObject::FilledEllipseObject(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t, uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:211:10:virtual uint16_t FilledEllipseObject::drawIntoFramebuffer(uint16_t*, uint16_t, uint16_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:216:6:void FilledEllipseObject::updateEllipse(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:230:1:OutlineEllipseObject::OutlineEllipseObject(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t, uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:241:10:virtual uint16_t OutlineEllipseObject::drawIntoFramebuffer(uint16_t*, uint16_t, uint16_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:246:6:void OutlineEllipseObject::updateEllipse(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:256:1:PointObject::PointObject(uint16_t, uint16_t, uint16_t, uint16_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:264:10:virtual uint16_t PointObject::drawIntoFramebuffer(uint16_t*, uint16_t, uint16_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:269:6:void PointObject::updatePoint(uint16_t, uint16_t, uint16_t, uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:281:1:ImageObject::ImageObject(const uint16_t*, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t, uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:285:10:virtual uint16_t ImageObject::drawIntoFramebuffer(uint16_t*, uint16_t, uint16_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:290:6:void ImageObject::updateImage(const uint16_t*, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t, uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:116:7:ImageObject::~ImageObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:116:7:virtual ImageObject::~ImageObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:107:7:PointObject::~PointObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:107:7:virtual PointObject::~PointObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:95:7:OutlineEllipseObject::~OutlineEllipseObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:95:7:virtual OutlineEllipseObject::~OutlineEllipseObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:83:7:FilledEllipseObject::~FilledEllipseObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:83:7:virtual FilledEllipseObject::~FilledEllipseObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:71:7:OutlineRectObject::~OutlineRectObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:71:7:virtual OutlineRectObject::~OutlineRectObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:59:7:FilledRectObject::~FilledRectObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:59:7:virtual FilledRectObject::~FilledRectObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:47:7:StringObject::~StringObject()	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:47:7:virtual StringObject::~StringObject()	1

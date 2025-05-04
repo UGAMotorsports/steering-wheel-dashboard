@@ -2,5 +2,5 @@
 ../Core/Src/shiftLights.c:39:6:shiftLightsInit	40	static
 ../Core/Src/shiftLights.c:64:6:HAL_TIM_PWM_PulseFinishedCallback	16	static
 ../Core/Src/shiftLights.c:70:6:UpdateShiftLights	48	static
-../Core/Src/shiftLights.c:83:6:lightOn	40	static
-../Core/Src/shiftLights.c:98:6:startUp	56	static
+../Core/Src/shiftLights.c:88:6:lightOn	40	static
+../Core/Src/shiftLights.c:107:6:startUp	56	static

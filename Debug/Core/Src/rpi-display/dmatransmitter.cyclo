@@ -1,0 +1,2 @@
+../Core/Src/rpi-display/dmatransmitter.c:12:6:transmitdma	1
+../Core/Src/rpi-display/dmatransmitter.c:17:6:HAL_SPI_TxCpltCallback	2

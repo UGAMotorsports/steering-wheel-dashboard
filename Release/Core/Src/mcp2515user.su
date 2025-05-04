@@ -1,0 +1,4 @@
+../Core/Src/mcp2515user.cpp:17:6:void initializeMCP2515()	8	static
+../Core/Src/mcp2515user.cpp:23:5:int sendMessage(can_frame*)	8	static
+../Core/Src/mcp2515user.cpp:27:5:int readMessage(can_frame*)	8	static
+../Core/Src/mcp2515user.cpp:29:1:cpp)	16	static

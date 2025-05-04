@@ -7,7 +7,7 @@
 
 #include "shiftLights.h"
 
-static int datasentflag = 0;
+volatile int datasentflag;
 extern TIM_HandleTypeDef htim4;
 
 
@@ -40,7 +40,7 @@ void shiftLightsInit(TIM_HandleTypeDef *htim, uint32_t Channel, uint8_t *ledcolo
 	for (int i = 0; i < 48; i += 3) {
 		ledcolors[i] = 0;
 		ledcolors[i + 1] = 0;
-		ledcolors[i + 2] = 0;
+		ledcolors[i + 2] = 255;
 	}
 	for (int i = 0; i < 48; i++) {
 		for (int j = 0; j < 8; j++) {
@@ -69,29 +69,38 @@ void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim) {
 
 void UpdateShiftLights(TIM_HandleTypeDef *htim, uint32_t Channel, uint8_t *ledcolors,
 		uint16_t *ledbytes, int current_rpm, int * RPM_thresholds) {
-  for (int i = 2; i < 14; i++) {
-    if (current_rpm >= RPM_thresholds[i - 2]) {
-        // Turn on the shift light (use appropriate LED control function)
-    	lightOn(htim, Channel,ledcolors, ledbytes, i);
-    } else {
-        // Turn off the shift light
-    	setColor(htim, Channel, 0, 0, 0, ledcolors, ledbytes, i);
+  if (current_rpm > 13000) {
+	  startUp(htim, Channel, ledcolors, ledbytes);
+  } else {
+	for (int i = 2; i < 14; i++) {
+	    if (current_rpm >= RPM_thresholds[i - 2]) {
+	        // Turn on the shift light (use appropriate LED control function)
+	    	lightOn(htim, Channel,ledcolors, ledbytes, i);
+	    }  else {
+	        // Turn off the shift light
+	    	setColor(htim, Channel, 0, 0, 0, ledcolors, ledbytes, i);
+	    }
     }
   }
+
 }
 
 void lightOn(TIM_HandleTypeDef *htim, uint32_t Channel, uint8_t *ledcolors,
 		uint16_t *ledbytes,int index) {
 	if (index == 13) {
-		startUp(&htim4, TIM_CHANNEL_1, ledcolors, ledbytes);
+		shiftLightsInit(htim, Channel, ledcolors, ledbytes);
+		setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 0);
+		setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 1);
+		setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 14);
+		setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 15);
 		HAL_Delay(5);
 	}
 	if (index < 6) {
-		setColor(htim, Channel, 255, 255, 0, ledcolors, ledbytes, index);
+		setColor(htim, Channel, 255, 0, 0, ledcolors, ledbytes, index);
 	} else if (index < 10) {
-		setColor(htim, Channel, 100, 255, 0, ledcolors, ledbytes, index);
-	} else if (index < 14){
 		setColor(htim, Channel, 0, 255, 0, ledcolors, ledbytes, index);
+	} else if (index < 14){
+		setColor(htim, Channel, 0, 0, 255, ledcolors, ledbytes, index);
 	}
 }
 

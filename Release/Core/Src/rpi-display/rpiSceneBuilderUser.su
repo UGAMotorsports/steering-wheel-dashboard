@@ -1,0 +1,6 @@
+../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:31:6:void setrpmdata(char*)	56	static
+../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:38:6:void settempdata(char*)	56	static
+../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:46:6:void setgeardata(char*)	56	static
+../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:53:6:void domainscreen()	8	static
+../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:58:6:void dosplashscene()	8	static
+../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:61:1:cpp)	48	static
