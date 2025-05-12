@@ -215,9 +215,13 @@ int main(void)
 			  if (neutrallight < 1024) {
 				  setColor(&htim4, TIM_CHANNEL_1, 255, 255, 255, ledcolors, ledbytes, 0);
 				  setColor(&htim4, TIM_CHANNEL_1, 255, 255, 255, ledcolors, ledbytes, 1);
+				  strncpy(result3, "7", 10);
+				  setgeardata(result3);
 			  } else {
 				  setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 0);
 				  setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 1);
+				  strncpy(result3, "8", 10);
+				  setgeardata(result3);
 			  }
 			  USB_Println("the neutral light value is %d\n", neutrallight);
 		  }
