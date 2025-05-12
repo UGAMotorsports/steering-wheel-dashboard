@@ -1,6 +1,6 @@
 Core/Src/mcp2515user.o: ../Core/Src/mcp2515user.cpp \
  ../Core/Src/mcp2515user.h ../Core/Src/stm32-hal-mcp2515/CAN.h \
- ../Core/Src/stm32-hal-mcp2515/mcp2515.h ../Core/Inc/SPI.h \
+ ../Core/Src/stm32-hal-mcp2515/mcp2515.h ../Core/Inc/spi.h \
  ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -32,11 +32,11 @@ Core/Src/mcp2515user.o: ../Core/Src/mcp2515user.cpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- ../Core/Src/stm32-hal-mcp2515/CAN.h ../Core/Inc/spi.h ../Core/Inc/gpio.h
+ ../Core/Src/stm32-hal-mcp2515/CAN.h ../Core/Inc/gpio.h
 ../Core/Src/mcp2515user.h:
 ../Core/Src/stm32-hal-mcp2515/CAN.h:
 ../Core/Src/stm32-hal-mcp2515/mcp2515.h:
-../Core/Inc/SPI.h:
+../Core/Inc/spi.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -70,5 +70,4 @@ Core/Src/mcp2515user.o: ../Core/Src/mcp2515user.cpp \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
 ../Core/Src/stm32-hal-mcp2515/CAN.h:
-../Core/Inc/spi.h:
 ../Core/Inc/gpio.h:
