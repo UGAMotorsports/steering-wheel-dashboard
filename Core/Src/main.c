@@ -75,19 +75,21 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-  if (GPIO_Pin == button1INT_Pin) {
-	  USB_Println("button 1 was pressed\n");
-  } else if (GPIO_Pin == button2INT_Pin) {
-	  USB_Println("button 2 was pressed\n");
-  } else if (GPIO_Pin == button3INT_Pin ) {
-	  USB_Println("button 3 was pressed\n");
-  } else if (GPIO_Pin == button4INT_Pin) {
-	  USB_Println("button 4 was pressed\n");
-  } else {
-      USB_Println("unknown button pressed: 0x%x", GPIO_Pin);
-  }
+static struct can_frame mark;
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+	if (GPIO_Pin == button1INT_Pin) {
+		USB_Println("button 1 was pressed\n");
+	} else if (GPIO_Pin == button2INT_Pin) {
+		USB_Println("button 2 was pressed\n");
+	} else if (GPIO_Pin == button3INT_Pin ) {
+		USB_Println("button 3 was pressed\n");
+		mark.can_id = 601;
+		sendMessage(&mark);
+	} else if (GPIO_Pin == button4INT_Pin) {
+		USB_Println("button 4 was pressed\n");
+	} else {
+		USB_Println("unknown button pressed: 0x%x", GPIO_Pin);
+	}
 }
 
 

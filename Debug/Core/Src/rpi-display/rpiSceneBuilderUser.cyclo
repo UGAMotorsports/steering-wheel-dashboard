@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:46:6:void setrpmdata(char*)	1
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:52:6:void settempdata(char*)	1
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:59:6:void setgeardata(char*)	1
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:65:6:void setbattdata(char*)	1
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:71:6:void setspeeddata(char*)	1
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:77:6:void domainscreen()	1
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:82:6:void dosplashscene()	1
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:85:1:void __static_initialization_and_destruction_0()	1
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:85:1:cpp)	1
-=======
 ../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:47:6:void setrpmdata(char*)	1
 ../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:53:6:void settempdata(char*)	1
 ../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:60:6:void setgeardata(char*)	1
@@ -16,6 +5,5 @@
 ../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:72:6:void setspeeddata(char*)	1
 ../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:78:6:void domainscreen()	1
 ../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:83:6:void dosplashscene()	1
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:86:1:void __static_initialization_and_destruction_0(int, int)	3
+../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:86:1:void __static_initialization_and_destruction_0()	1
 ../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:86:1:cpp)	1
->>>>>>> 36873c128e32f30bee7d37e22787030aa1f90180
