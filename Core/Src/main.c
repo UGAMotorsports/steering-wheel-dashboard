@@ -194,6 +194,7 @@ int main(void)
 			  settempdata(result2);
 		  } else if (frame.can_id == 1520 + 33) {
 			  uint8_t gear = ((uint8_t)frame.data[6]);
+			  USB_Println("the gear value is %d\n", gear);
 			  itoa(gear, result3, 10);
 			  setgeardata(result3);
 		  } else if (frame.can_id == 1515) {
@@ -211,6 +212,13 @@ int main(void)
 			  setbattdata(result4);
 		  } else if (frame.can_id == 504) {
 			  uint16_t neutrallight = (uint16_t)((frame.data[6] << 8) | (frame.data[7]));
+			  if (neutrallight < 1024) {
+				  setColor(&htim4, TIM_CHANNEL_1, 255, 255, 255, ledcolors, ledbytes, 0);
+				  setColor(&htim4, TIM_CHANNEL_1, 255, 255, 255, ledcolors, ledbytes, 1);
+			  } else {
+				  setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 0);
+				  setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 1);
+			  }
 			  USB_Println("the neutral light value is %d\n", neutrallight);
 		  }
 	  }

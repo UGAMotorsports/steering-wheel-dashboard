@@ -4,5 +4,5 @@
 ../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:60:6:void setbattdata(char*)	1
 ../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:66:6:void domainscreen()	1
 ../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:71:6:void dosplashscene()	1
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:74:1:void __static_initialization_and_destruction_0()	1
+../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:74:1:void __static_initialization_and_destruction_0(int, int)	3
 ../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:74:1:cpp)	1
