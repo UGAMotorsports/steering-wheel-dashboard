@@ -16,20 +16,23 @@
 #include <cstring>
 
 char rpmresult[17] = "";
+char rpmicon[3] = "#";
 char tempresult[18] = "";
 char speedresult[20] = "";
 char gearresult[20] = "8";
 char battresult[20] = "";
 char tempicon[3] = " ";
 char batticon[3] = "\"";
-DisplayObject* otherobjects[7] = {
-		new StringObject(420, 260, 0xFFFF, FREE_MONO_BOLD_24PT7B, LEFTDRAW_OBJECT, rpmresult, 1),
+DisplayObject* otherobjects[9] = {
+		new StringObject(200, 260, 0xFFFF, FREE_MONO_BOLD_24PT7B, NO_CENTER_OBJECT, rpmresult, 1),
 		new StringObject(350, 100, 0xFFFF, FREE_SANS_18PT7B, CENTER_OBJECT, tempresult, 3),
 		new StringObject(350, 60, 0xFFFF, FREE_SANS_18PT7B, CENTER_OBJECT, battresult, 6),
 		new StringObject(100, 240, 0xFFFF, GEARFONT, CENTER_OBJECT, gearresult, 2),
 		new StringObject(395, 130, 0xFFFF, ICONFONT, CENTER_OBJECT, tempicon, 4),
 		new StringObject(400, 90, 0xFFFF, ICONFONT, CENTER_OBJECT, batticon, 5),
-		new StringObject(100, 80, 0xFFFF, FREE_SANS_18PT7B, NO_CENTER_OBJECT, speedresult, 7)
+		new StringObject(140, 55, 0xFFFF, FREE_SANS_18PT7B, LEFTDRAW_OBJECT, speedresult, 7),
+		new StringObject(440, 288, 0xFFFF, ICONFONT, LEFTDRAW_OBJECT, rpmicon, 8),
+		new OutlineRectObject(190, 250, 260, 55, 0xFFFF, NO_CENTER_OBJECT, 9)
 };
 Scene myScene2(otherobjects, 6);
 
@@ -42,8 +45,7 @@ Scene splashScene(splashobjects, 1);
 void setrpmdata(char *rpmvalue) {
 	strncpy(rpmresult, "", 10);
 	strncat(rpmresult, rpmvalue, 10);
-	strncat(rpmresult, "RPM", 10);
-	((StringObject*)otherobjects[0])->updateString(rpmresult, LEFTDRAW_OBJECT, 0xFFFF, FREE_MONO_BOLD_24PT7B, 420, 260, 1);
+	((StringObject*)otherobjects[0])->updateString(rpmresult, NO_CENTER_OBJECT, 0xFFFF, FREE_MONO_BOLD_24PT7B, 200, 260, 1);
 }
 
 void settempdata(char *tempvalue) {
@@ -68,12 +70,12 @@ void setbattdata(char *battvalue) {
 void setspeeddata(char *speedvalue) {
 	strncpy(speedresult, "", 10);
 	strncat(speedresult, speedvalue, 10);
-	((StringObject*)otherobjects[6])->updateString(speedresult, NO_CENTER_OBJECT, 0xFFFF, FREE_SANS_18PT7B, 100, 80, 7);
+	((StringObject*)otherobjects[6])->updateString(speedresult, LEFTDRAW_OBJECT, 0xFFFF, FREE_SANS_18PT7B, 140, 55, 7);
 }
 
 void domainscreen() {
 	myScene2.drawScene();
-	myScene2.setScene(otherobjects, 7);
+	myScene2.setScene(otherobjects, 9);
 }
 
 void dosplashscene() {
