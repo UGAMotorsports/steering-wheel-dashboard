@@ -431,6 +431,11 @@ uint16_t drawChar(char letter, const GFXfont *font, uint16_t xpos, uint16_t ypos
 	return (uint16_t)xadv;
 }
 
+uint16_t getCharXadv(char letter, const GFXfont *font) {
+	GFXglyph *toDraw = &((font->glyph)[letter - 32]);
+	return toDraw->xAdvance;
+}
+
 uint16_t drawCharIntoFramebuffer(char letter, const GFXfont *font, uint16_t color, uint16_t xpos, uint16_t ypos, uint8_t positioning,
 		uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart) {
 	GFXglyph *toDraw = &((font->glyph)[letter - 32]);
@@ -487,6 +492,10 @@ uint16_t drawStringIntoFramebuffer(char* buffer, const GFXfont *font, uint16_t c
 	uint16_t buffersize = 0;
 	while (buffer[++buffersize]) {};
 	for (int i = buffersize - 1; i >= 0; i--) {
+		if ((stringxpos + xAdvance) > (xstart + framewidth)) {
+			xAdvance += getCharXadv(buffer[i], font);
+			break;
+		}
 		xAdvance += drawCharIntoFramebuffer(buffer[i], font, color, stringxpos + xAdvance, stringypos, NO_CENTER_OBJECT, framebuffer, framewidth, xstart);
 	}
 	return font->yAdvance;

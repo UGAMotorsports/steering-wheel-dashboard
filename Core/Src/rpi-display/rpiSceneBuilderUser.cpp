@@ -29,7 +29,7 @@ DisplayObject* otherobjects[6] = {
 		new StringObject(395, 130, 0xFFFF, ICONFONT, CENTER_OBJECT, tempicon, 4),
 		new StringObject(400, 90, 0xFFFF, ICONFONT, CENTER_OBJECT, batticon, 5)
 };
-Scene myScene2(otherobjects, 5);
+Scene myScene2(otherobjects, 6);
 
 char *image = "splash.bin";
 DisplayObject* splashobjects[1] = {

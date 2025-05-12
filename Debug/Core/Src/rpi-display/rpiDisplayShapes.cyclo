@@ -32,7 +32,8 @@
 ../Core/Src/rpi-display/rpiDisplayShapes.c:383:6:getStringCenter	2
 ../Core/Src/rpi-display/rpiDisplayShapes.c:396:6:getStringLeft	2
 ../Core/Src/rpi-display/rpiDisplayShapes.c:409:10:drawChar	5
-../Core/Src/rpi-display/rpiDisplayShapes.c:434:10:drawCharIntoFramebuffer	7
-../Core/Src/rpi-display/rpiDisplayShapes.c:466:9:drawString	4
-../Core/Src/rpi-display/rpiDisplayShapes.c:479:10:drawStringIntoFramebuffer	5
-../Core/Src/rpi-display/rpiDisplayShapes.c:495:6:drawImageIntoFramebuffer	7
+../Core/Src/rpi-display/rpiDisplayShapes.c:434:10:getCharXadv	1
+../Core/Src/rpi-display/rpiDisplayShapes.c:439:10:drawCharIntoFramebuffer	7
+../Core/Src/rpi-display/rpiDisplayShapes.c:471:9:drawString	4
+../Core/Src/rpi-display/rpiDisplayShapes.c:484:10:drawStringIntoFramebuffer	6
+../Core/Src/rpi-display/rpiDisplayShapes.c:504:6:drawImageIntoFramebuffer	7

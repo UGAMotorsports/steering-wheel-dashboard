@@ -147,7 +147,7 @@ int main(void)
   initializeMCP2515();
   uint8_t ledcolors[3 * 16];
   uint16_t ledbytes[(16 * 24) + 150];
-  int G1[12] = {500, 2500, 4000, 5000, 6000, 7000, 8000, 8500, 9000, 9500,
+  int G1[12] = {500, 3000, 4000, 5000, 6000, 7000, 8000, 8500, 9000, 9500,
   10000, 10500};
   shiftLightsInit(&htim4, TIM_CHANNEL_1, ledcolors, ledbytes);
   setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 0);
@@ -155,7 +155,7 @@ int main(void)
   setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 14);
   setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 15);
 
-  resetScreen();\
+  resetScreen();
   initializeScreen();
   //dosplashscene();
   startUp(&htim4, TIM_CHANNEL_1, ledcolors, ledbytes);
