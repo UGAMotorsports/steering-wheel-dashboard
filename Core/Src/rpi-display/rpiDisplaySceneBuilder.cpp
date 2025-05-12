@@ -278,7 +278,7 @@ void PointObject::updatePoint(uint16_t xpos, uint16_t ypos, uint16_t color, uint
  * the following below are for the imageobject method definitions
  */
 
-ImageObject::ImageObject(const uint16_t* image, uint16_t length, uint16_t height, uint16_t x, uint16_t y, uint8_t positioning, uint8_t priority) {
+ImageObject::ImageObject(char* image, uint16_t length, uint16_t height, uint16_t x, uint16_t y, uint8_t positioning, uint8_t priority) {
 	this->updateImage(image, length, height, x, y, positioning, priority);
 }
 
@@ -287,7 +287,7 @@ uint16_t ImageObject::drawIntoFramebuffer(uint16_t *framebuffer, uint16_t framew
 	return 0;
 }
 
-void ImageObject::updateImage(const uint16_t *image, uint16_t length, uint16_t height, uint16_t x, uint16_t y, uint8_t positioning, uint8_t priority) {
+void ImageObject::updateImage(char *image, uint16_t length, uint16_t height, uint16_t x, uint16_t y, uint8_t positioning, uint8_t priority) {
 	this->setxpos(x);
 	this->setypos(y);
 	this->image = image;

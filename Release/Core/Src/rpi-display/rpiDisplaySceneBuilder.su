@@ -45,5 +45,5 @@
 ../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:246:6:void OutlineEllipseObject::updateEllipse(uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t)	0	static
 ../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:256:1:PointObject::PointObject(uint16_t, uint16_t, uint16_t, uint16_t)	12	static
 ../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:269:6:void PointObject::updatePoint(uint16_t, uint16_t, uint16_t, uint8_t)	0	static
-../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:281:1:ImageObject::ImageObject(const uint16_t*, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t, uint8_t)	12	static
-../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:290:6:void ImageObject::updateImage(const uint16_t*, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t, uint8_t)	8	static
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:281:1:ImageObject::ImageObject(char*, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t, uint8_t)	12	static
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:290:6:void ImageObject::updateImage(char*, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t, uint8_t)	8	static

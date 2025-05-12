@@ -115,14 +115,14 @@ private:
 
 class ImageObject : public DisplayObject {
 public:
-	ImageObject(const uint16_t* image, uint16_t length, uint16_t height, uint16_t x, uint16_t y, uint8_t positioning, uint8_t priority);
+	ImageObject(char* image, uint16_t length, uint16_t height, uint16_t x, uint16_t y, uint8_t positioning, uint8_t priority);
 	uint16_t drawIntoFramebuffer(uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart) override;
-	void updateImage(const uint16_t* image, uint16_t length, uint16_t height, uint16_t x, uint16_t y, uint8_t positioning, uint8_t priority);
+	void updateImage(char* image, uint16_t length, uint16_t height, uint16_t x, uint16_t y, uint8_t positioning, uint8_t priority);
 private:
 	uint16_t length;
 	uint16_t height;
 	uint8_t positioning;
-	const uint16_t *image;
+	char *image;
 };
 
 #endif /* SRC_RPI_DISPLAY_RPIDISPLAYSCENEBUILDER_H_ */

@@ -15,6 +15,7 @@
  * flags for object positioning, you OR together the ones you want, and give the result to a drawing function
  */
 #define CENTER_OBJECT 0b00000010
+#define LEFTDRAW_OBJECT 0b00000001
 #define NO_CENTER_OBJECT 0b00000000
 
 /*
@@ -29,6 +30,8 @@
  */
 #define FREE_MONO_BOLD_24PT7B &FreeMonoBold24pt7b
 #define FREE_SANS_18PT7B &FreeSans18pt7b
+#define GEARFONT &gearFont
+#define ICONFONT &iconFont
 
 
 /*
@@ -179,7 +182,7 @@ extern "C" {
 	void drawRectangleFilledIntoFramebuffer(uint16_t x1, uint16_t y1, uint16_t length, uint16_t height, uint16_t color, uint8_t positioning, uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart);
 	uint16_t drawCharIntoFramebuffer(char letter, const GFXfont *font, uint16_t color, uint16_t xpos, uint16_t ypos, uint8_t positioning, uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart);
 	uint16_t drawStringIntoFramebuffer(char* buffer, const GFXfont *font, uint16_t color, uint16_t stringxpos, uint16_t stringypos, uint8_t positioning, uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart);
-	void drawImageIntoFramebuffer(const uint16_t* image, uint16_t length, uint16_t height, uint16_t x, uint16_t y, uint8_t positioning, uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart);
+	void drawImageIntoFramebuffer(const char* image, uint16_t length, uint16_t height, uint16_t x, uint16_t y, uint8_t positioning, uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart);
 
 	void modifySpace(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);
 	void dataOrRegister(uint8_t data);

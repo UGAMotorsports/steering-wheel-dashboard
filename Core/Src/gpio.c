@@ -67,10 +67,8 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(led_heartbeat_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PADDLE_PLUS_Pin PADDLE_MINUS_Pin button3_Pin button2_Pin
-                           button1_Pin */
-  GPIO_InitStruct.Pin = PADDLE_PLUS_Pin|PADDLE_MINUS_Pin|button3_Pin|button2_Pin
-                          |button1_Pin;
+  /*Configure GPIO pins : PADDLE_PLUS_Pin PADDLE_MINUS_Pin */
+  GPIO_InitStruct.Pin = PADDLE_PLUS_Pin|PADDLE_MINUS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -91,11 +89,30 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : button4_Pin */
-  GPIO_InitStruct.Pin = button4_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  /*Configure GPIO pin : button4INT_Pin */
+  GPIO_InitStruct.Pin = button4INT_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(button4_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(button4INT_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : button1INT_Pin button2INT_Pin */
+  GPIO_InitStruct.Pin = button1INT_Pin|button2INT_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : button3INT_Pin */
+  GPIO_InitStruct.Pin = button3INT_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(button3INT_GPIO_Port, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 }
 

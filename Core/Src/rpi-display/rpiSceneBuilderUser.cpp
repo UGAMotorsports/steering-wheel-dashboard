@@ -10,49 +10,62 @@
 #include "rpiDisplaySceneBuilder.h"
 #include "FreeSans18pt7b.h"
 #include "FreeMonoBold24pt7b.h"
+#include "gearFont.h"
+#include "iconFont.h"
 #include "splashimage.h"
 #include <cstring>
 
-char rpmresult[17] = "rpm: ";
-char tempresult[18] = "temp: ";
-char gearresult[20] = "GEAR: ";
-DisplayObject* otherobjects[3] = {
-		new StringObject(240, 160, 0xFFFF, FREE_MONO_BOLD_24PT7B, CENTER_OBJECT, rpmresult, 1),
-		new StringObject(240, 100, 0xFFFF, FREE_SANS_18PT7B, CENTER_OBJECT, tempresult, 3),
-		new StringObject(240, 200, 0xFFFF, FREE_MONO_BOLD_24PT7B, CENTER_OBJECT, gearresult, 2)
+char rpmresult[17] = "";
+char tempresult[18] = "";
+char gearresult[20] = "8";
+char battresult[20] = "";
+char tempicon[3] = " ";
+char batticon[3] = "\"";
+DisplayObject* otherobjects[6] = {
+		new StringObject(420, 260, 0xFFFF, FREE_MONO_BOLD_24PT7B, LEFTDRAW_OBJECT, rpmresult, 1),
+		new StringObject(350, 100, 0xFFFF, FREE_SANS_18PT7B, CENTER_OBJECT, tempresult, 3),
+		new StringObject(350, 60, 0xFFFF, FREE_SANS_18PT7B, CENTER_OBJECT, battresult, 6),
+		new StringObject(100, 240, 0xFFFF, GEARFONT, CENTER_OBJECT, gearresult, 2),
+		new StringObject(395, 130, 0xFFFF, ICONFONT, CENTER_OBJECT, tempicon, 4),
+		new StringObject(400, 90, 0xFFFF, ICONFONT, CENTER_OBJECT, batticon, 5)
 };
-Scene myScene2(otherobjects, 3);
+Scene myScene2(otherobjects, 5);
 
-DisplayObject* splashobjects[3] = {
-		new ImageObject(epd_bitmap_Screenshot_from_2025_05_03_23_43_00, SPLASH_LENGTH, SPLASH_HEIGHT, 240, 160, CENTER_OBJECT, 2)
+char *image = "splash.bin";
+DisplayObject* splashobjects[1] = {
+		new ImageObject(image, SPLASH_LENGTH, SPLASH_HEIGHT, 240, 160, CENTER_OBJECT, 2)
 };
 Scene splashScene(splashobjects, 1);
 
 void setrpmdata(char *rpmvalue) {
-	char newrpmresult[17] = "rpm: ";
-	strncpy(rpmresult, newrpmresult, 16);
+	strncpy(rpmresult, "", 10);
 	strncat(rpmresult, rpmvalue, 10);
-	((StringObject*)otherobjects[0])->updateString(rpmresult, CENTER_OBJECT, 0xFFFF, FREE_MONO_BOLD_24PT7B, 240, 160, 1);
+	strncat(rpmresult, "RPM", 10);
+	((StringObject*)otherobjects[0])->updateString(rpmresult, LEFTDRAW_OBJECT, 0xFFFF, FREE_MONO_BOLD_24PT7B, 420, 260, 1);
 }
 
 void settempdata(char *tempvalue) {
-	char newtempresult[18] = "temp: ";
-	strncpy(tempresult, newtempresult, 17);
+	strncpy(tempresult, "", 10);
 	strncat(tempresult, tempvalue, 10);
-	((StringObject*)otherobjects[1])->updateString(tempresult, CENTER_OBJECT, 0xFFFF, FREE_SANS_18PT7B, 240, 100, 3);
+	((StringObject*)otherobjects[1])->updateString(tempresult, CENTER_OBJECT, 0xFFFF, FREE_SANS_18PT7B, 350, 100, 3);
 
 }
 
 void setgeardata(char *gearvalue) {
-	char newgearresult[20] = "GEAR: ";
-	strncpy(gearresult, newgearresult, 20);
+	strncpy(gearresult, "", 10);
 	strncat(gearresult, gearvalue, 10);
-	((StringObject*)otherobjects[2])->updateString(gearresult, CENTER_OBJECT, 0xFFFF, FREE_MONO_BOLD_24PT7B, 240, 200, 2);
+	((StringObject*)otherobjects[3])->updateString(gearresult, CENTER_OBJECT, 0xFFFF, GEARFONT, 100, 240, 2);
+}
+
+void setbattdata(char *battvalue) {
+	strncpy(battresult, "", 10);
+	strncat(battresult, battvalue, 10);
+	((StringObject*)otherobjects[2])->updateString(battresult, CENTER_OBJECT, 0xFFFF, FREE_SANS_18PT7B, 350, 60, 6);
 }
 
 void domainscreen() {
 	myScene2.drawScene();
-	myScene2.setScene(otherobjects, 3);
+	myScene2.setScene(otherobjects, 6);
 }
 
 void dosplashscene() {

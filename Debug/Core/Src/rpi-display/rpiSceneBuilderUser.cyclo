@@ -1,7 +1,8 @@
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:31:6:void setrpmdata(char*)	1
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:38:6:void settempdata(char*)	1
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:46:6:void setgeardata(char*)	1
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:53:6:void domainscreen()	1
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:58:6:void dosplashscene()	1
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:61:1:void __static_initialization_and_destruction_0()	1
-../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:61:1:cpp)	1
+../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:40:6:void setrpmdata(char*)	1
+../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:47:6:void settempdata(char*)	1
+../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:54:6:void setgeardata(char*)	1
+../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:60:6:void setbattdata(char*)	1
+../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:66:6:void domainscreen()	1
+../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:71:6:void dosplashscene()	1
+../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:74:1:void __static_initialization_and_destruction_0()	1
+../Core/Src/rpi-display/rpiSceneBuilderUser.cpp:74:1:cpp)	1

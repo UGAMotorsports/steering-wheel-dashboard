@@ -31,9 +31,9 @@
 ../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:256:1:PointObject::PointObject(uint16_t, uint16_t, uint16_t, uint16_t)	1
 ../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:264:10:virtual uint16_t PointObject::drawIntoFramebuffer(uint16_t*, uint16_t, uint16_t)	1
 ../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:269:6:void PointObject::updatePoint(uint16_t, uint16_t, uint16_t, uint8_t)	1
-../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:281:1:ImageObject::ImageObject(const uint16_t*, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t, uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:281:1:ImageObject::ImageObject(char*, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t, uint8_t)	1
 ../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:285:10:virtual uint16_t ImageObject::drawIntoFramebuffer(uint16_t*, uint16_t, uint16_t)	1
-../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:290:6:void ImageObject::updateImage(const uint16_t*, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t, uint8_t)	1
+../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp:290:6:void ImageObject::updateImage(char*, uint16_t, uint16_t, uint16_t, uint16_t, uint8_t, uint8_t)	1
 ../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:116:7:ImageObject::~ImageObject()	1
 ../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:116:7:virtual ImageObject::~ImageObject()	1
 ../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:107:7:PointObject::~PointObject()	1

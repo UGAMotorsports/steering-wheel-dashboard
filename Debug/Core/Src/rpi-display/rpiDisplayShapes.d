@@ -33,7 +33,13 @@ Core/Src/rpi-display/rpiDisplayShapes.o: \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- ../Core/Inc/spi.h ../Core/Src/rpi-display/dmatransmitter.h
+ ../Core/Inc/spi.h ../Core/Src/rpi-display/dmatransmitter.h \
+ ../FATFS/App/fatfs.h ../Middlewares/Third_Party/FatFs/src/ff.h \
+ ../Middlewares/Third_Party/FatFs/src/integer.h ../FATFS/Target/ffconf.h \
+ ../Core/Inc/main.h ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
+ ../Middlewares/Third_Party/FatFs/src/diskio.h \
+ ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h \
+ ../Core/Src/rpi-display/../easyusbprintln/easyusbprintln.h
 ../Core/Src/rpi-display/rpiDisplayShapes.h:
 ../Core/Src/rpi-display/gfxfont.h:
 ../Core/Inc/gpio.h:
@@ -71,3 +77,13 @@ Core/Src/rpi-display/rpiDisplayShapes.o: \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
 ../Core/Inc/spi.h:
 ../Core/Src/rpi-display/dmatransmitter.h:
+../FATFS/App/fatfs.h:
+../Middlewares/Third_Party/FatFs/src/ff.h:
+../Middlewares/Third_Party/FatFs/src/integer.h:
+../FATFS/Target/ffconf.h:
+../Core/Inc/main.h:
+../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h:
+../Middlewares/Third_Party/FatFs/src/diskio.h:
+../Middlewares/Third_Party/FatFs/src/ff.h:
+../FATFS/Target/user_diskio.h:
+../Core/Src/rpi-display/../easyusbprintln/easyusbprintln.h:

@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "dma.h"
+#include "fatfs.h"
 #include "spi.h"
 #include "tim.h"
 #include "usb_device.h"
@@ -32,6 +33,8 @@
 #include "rpi-display/FreeSans18pt7b.h"
 #include "rpi-display/rpiSceneBuilderUser.h"
 #include "shiftLights.h"
+#include "easyusbprintln/easyusbprintln.h"
+
 #include <stdio.h>
 
 #include "mcp2515user.h"
@@ -72,6 +75,21 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  if (GPIO_Pin == button1INT_Pin) {
+	  USB_Println("button 1 was pressed\n");
+  } else if (GPIO_Pin == button2INT_Pin) {
+	  USB_Println("button 2 was pressed\n");
+  } else if (GPIO_Pin == button3INT_Pin ) {
+	  USB_Println("button 3 was pressed\n");
+  } else if (GPIO_Pin == button4INT_Pin) {
+	  USB_Println("button 4 was pressed\n");
+  } else {
+      USB_Println("unknown button pressed: 0x%x", GPIO_Pin);
+  }
+}
+
 
 /* USER CODE END 0 */
 
@@ -109,12 +127,22 @@ int main(void)
   MX_USB_DEVICE_Init();
   MX_SPI2_Init();
   MX_TIM4_Init();
+  MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
+  FATFS fs;
+  FRESULT fresult = f_mount(&fs, "/", 1);
+  if (fresult != FR_OK) {
+	  HAL_Delay(1000);
+	  USB_Println("There was an error: %d\n", fresult);
+  } else {
+	  HAL_Delay(1000);
+	  USB_Println("the sdcard is mounted\n");
+  }
 
   initializeMCP2515();
   uint8_t ledcolors[3 * 16];
@@ -127,18 +155,20 @@ int main(void)
   setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 14);
   setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 15);
 
-  resetScreen();
+  resetScreen();\
   initializeScreen();
-  dosplashscene();
+  //dosplashscene();
   startUp(&htim4, TIM_CHANNEL_1, ledcolors, ledbytes);
   HAL_Delay(200);
 
   char result[20] = "null"; //rpm
   char result2[20] = "null";//temp
-  char result3[20] = "null";//gear
+  char result3[20] = "8";//gear
+  char result4[20] = "null"; //battery volt
   settempdata(result2);
   setgeardata(result3);
   setrpmdata(result);
+  setbattdata(result4);
   domainscreen();
 
   struct can_frame frame;
@@ -159,12 +189,29 @@ int main(void)
 			  } else {
 				setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 15);
 			  }
+			  temp /= 10;
 			  itoa(temp, result2, 10);
 			  settempdata(result2);
 		  } else if (frame.can_id == 1520 + 33) {
 			  uint8_t gear = ((uint8_t)frame.data[6]);
 			  itoa(gear, result3, 10);
 			  setgeardata(result3);
+		  } else if (frame.can_id == 1515) {
+			  uint8_t battvalue = (((uint16_t)frame.data[0]) << 8) + frame.data[1];
+			  uint8_t batIntPart = battvalue / 10;
+			  uint8_t batDecimalPart = battvalue % 10;
+			  char batint[10];
+			  char batdec[10];
+			  itoa(batIntPart, batint, 10);
+			  itoa(batDecimalPart, batdec, 10);
+			  strncpy(result4, "", 20);
+			  strncat(result4, batint, 5);
+			  strncat(result4, ".", 5);
+			  strncat(result4, batdec, 1);
+			  setbattdata(result4);
+		  } else if (frame.can_id == 504) {
+			  uint16_t neutrallight = (uint16_t)((frame.data[6] << 8) | (frame.data[7]));
+			  USB_Println("the neutral light value is %d\n", neutrallight);
 		  }
 	  }
 

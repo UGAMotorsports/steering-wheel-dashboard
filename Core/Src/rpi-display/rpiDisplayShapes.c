@@ -11,6 +11,11 @@
 #include "gpio.h"
 #include "spi.h"
 #include "dmatransmitter.h"
+#include "fatfs.h"
+#include "../easyusbprintln/easyusbprintln.h"
+#include <string.h>
+
+extern uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len);
 
 
 void startTransaction() {
@@ -122,7 +127,7 @@ void initializeScreen() {
 		commandAndData(0xB6, data, sizeof(data));
 	}
 	{
-		uint16_t data[] = {0x0008}; //CHANGE THIS TO FLIP SCREEN
+		uint16_t data[] = {0x0008}; //CHANGE THIS TO FLIP SCREEN (0x0008 for steering wheel, 0x0088 for test screen)
 		commandAndData(0x36, data, sizeof(data));
 	}
 	clearScreenfast(0x0000);
@@ -388,6 +393,19 @@ void getStringCenter(uint16_t *currentx, uint16_t *currenty, char *buffer, const
 	//*currenty += font->yAdvance / 2;
 }
 
+void getStringLeft(uint16_t *currentx, uint16_t *currenty, char *buffer, const GFXfont *font) {
+	char *currentletter = buffer;
+
+	uint16_t totallength = 0;
+	while (*(currentletter)) {
+		GFXglyph *letter = &((font->glyph)[*currentletter - 32]);
+		totallength += (uint16_t)(letter->xAdvance);
+		currentletter++;
+	}
+	*currentx -= totallength;
+	//*currenty += font->yAdvance / 2;
+}
+
 uint16_t drawChar(char letter, const GFXfont *font, uint16_t xpos, uint16_t ypos, uint8_t positioning, uint16_t color) {
 	GFXglyph *toDraw = &((font->glyph)[letter - 32]);
 	int16_t width = toDraw->width, height = toDraw->height;
@@ -433,7 +451,9 @@ uint16_t drawCharIntoFramebuffer(char letter, const GFXfont *font, uint16_t colo
 				uint16_t pointx = (uint16_t)((int16_t)xpos + xadv - xo - xx);
 				uint16_t pointy = (uint16_t)((int16_t)ypos - yy - yo);
 				if ((pointx >= xstart) & (pointx < (xstart + framewidth))) {
-					framebuffer[(pointx - xstart) * SCREEN_HEIGHT + pointy] = color;
+					if ((pointy < SCREEN_HEIGHT) & (pointy >= 0)) {
+						framebuffer[(pointx - xstart) * SCREEN_HEIGHT + pointy] = color;
+					}
 				}
 			}
 			bits <<= 1;
@@ -460,6 +480,8 @@ uint16_t drawStringIntoFramebuffer(char* buffer, const GFXfont *font, uint16_t c
 		uint8_t positioning, uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart) {
 	if (positioning & CENTER_OBJECT) {
 		getStringCenter(&stringxpos, &stringypos, buffer, font);
+	} else if (positioning & LEFTDRAW_OBJECT) {
+		getStringLeft(&stringxpos, &stringypos, buffer, font);
 	}
 	uint16_t xAdvance = 0;
 	uint16_t buffersize = 0;
@@ -470,20 +492,40 @@ uint16_t drawStringIntoFramebuffer(char* buffer, const GFXfont *font, uint16_t c
 	return font->yAdvance;
 }
 
-void drawImageIntoFramebuffer(const uint16_t* image, uint16_t length, uint16_t height, uint16_t x, uint16_t y,
+void drawImageIntoFramebuffer(const char *image, uint16_t length, uint16_t height, uint16_t x, uint16_t y,
 		uint8_t positioning, uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart) {
+	length = 400;
+	height = 215;
 	if (positioning & CENTER_OBJECT) {
 		 getRectCenter(&x, &y, length, height);
 	}
+	FIL newfile;
+	FRESULT fresult = f_open(&newfile, image, FA_READ);
+	if (fresult == FR_OK) {
+		USB_Println("the file was opened good\n");
+	} else {
+		USB_Println("failure to open %s\n", image);
+	}
+	uint16_t readbuffer[height];
+	unsigned int br = 0;
 	for (int xx = x; xx < x + length; xx++) {
-		for (int yy = y; yy < y + height; yy++) {
-			if ((xx >= xstart) & (xx < (xstart + framewidth))) {
-				framebuffer[(xx - xstart) * SCREEN_HEIGHT + yy] = image[(height - yy + y - 1) * length + (length - xx + x - 1)];
-			} else {
-				break;
+		f_read(&newfile, (void*)readbuffer, sizeof(readbuffer), &br);
+		if ((xx >= xstart) & (xx < (xstart + framewidth))) {
+			for (int i = 0; i < height; i++) {
+				//USB_Println("writing to screen, x:%d, y:%d\n",xx, y + i);
+				int coordinate = ((xx - xstart) * SCREEN_HEIGHT) + y + i;
+				char whatbuffer[20];
+				itoa(coordinate, whatbuffer, 10);
+				strncat(whatbuffer, "\n", 10);
+				CDC_Transmit_FS((uint8_t*)whatbuffer, strlen(whatbuffer));
+				framebuffer[(xx - xstart) * SCREEN_HEIGHT + y + i] = readbuffer[i];
 			}
 		}
+		if (xx > (xstart + framewidth)) {
+			break;
+		}
 	}
+	f_close(&newfile);
 }
 
 

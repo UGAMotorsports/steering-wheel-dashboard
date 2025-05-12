@@ -16,6 +16,7 @@ extern "C" {
 	void setrpmdata(char *rpmvalue);
 	void settempdata(char *tempvalue);
 	void setgeardata(char *gearvalue);
+	void setbattdata(char *battvalue);
 	void dosplashscene();
 #ifdef __cplusplus
 }
