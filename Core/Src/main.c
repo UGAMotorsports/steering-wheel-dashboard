@@ -233,8 +233,9 @@ int main(void)
 					  setgeardata(result3);
 				  }
 				  //USB_Println("the neutral light value is %d\n", neutrallight);
-			  } else if (frame.can_id == 1520) {
+			  } else if (frame.can_id == 1520 + 42) {
 				  uint16_t speed = (uint16_t)((frame.data[0] << 8) | (frame.data[1]));
+				  speed /= 10;
 				  itoa(speed, (char*) result5, 10);
 				  setspeeddata(result5);
 			  }
