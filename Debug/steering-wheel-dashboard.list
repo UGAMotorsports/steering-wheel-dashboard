@@ -7,23 +7,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   1 .text         0000fd1c  080001a0  080001a0  000011a0  2**4
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00007b8c  0800febc  0800febc  00010ebc  2**2
+  2 .rodata       00007c04  0800febc  0800febc  00010ebc  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  08017a48  08017a48  00019184  2**0
+  3 .ARM.extab    00000000  08017ac0  08017ac0  00019184  2**0
                   CONTENTS, READONLY
-  4 .ARM          00000008  08017a48  08017a48  00018a48  2**2
+  4 .ARM          00000008  08017ac0  08017ac0  00018ac0  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  5 .preinit_array 00000000  08017a50  08017a50  00019184  2**0
+  5 .preinit_array 00000000  08017ac8  08017ac8  00019184  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   0000000c  08017a50  08017a50  00018a50  2**2
+  6 .init_array   0000000c  08017ac8  08017ac8  00018ac8  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  7 .fini_array   00000004  08017a5c  08017a5c  00018a5c  2**2
+  7 .fini_array   00000004  08017ad4  08017ad4  00018ad4  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  8 .data         00000184  20000000  08017a60  00019000  2**2
+  8 .data         00000184  20000000  08017ad8  00019000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          000017d4  20000184  08017be4  00019184  2**2
+  9 .bss          000017d4  20000184  08017c5c  00019184  2**2
                   ALLOC
- 10 ._user_heap_stack 00000600  20001958  08017be4  00019958  2**0
+ 10 ._user_heap_stack 00000600  20001958  08017c5c  00019958  2**0
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  00019184  2**0
                   CONTENTS, READONLY
@@ -8124,7 +8124,7 @@ Scene splashScene(splashobjects, 1);
  80038d8:	20000008 	.word	0x20000008
  80038dc:	08017768 	.word	0x08017768
  80038e0:	2000001c 	.word	0x2000001c
- 80038e4:	08017950 	.word	0x08017950
+ 80038e4:	080179c8 	.word	0x080179c8
  80038e8:	20000020 	.word	0x20000020
  80038ec:	200003d4 	.word	0x200003d4
  80038f0:	20000024 	.word	0x20000024
@@ -9960,7 +9960,7 @@ MCP2515::ERROR MCP2515::readMessage(const RXBn rxbn, struct can_frame *frame)
  800438e:	3720      	adds	r7, #32
  8004390:	46bd      	mov	sp, r7
  8004392:	bd80      	pop	{r7, pc}
- 8004394:	08017960 	.word	0x08017960
+ 8004394:	080179d8 	.word	0x080179d8
 
 08004398 <_ZN7MCP251511readMessageEP9can_frame>:
 
@@ -10105,7 +10105,7 @@ LoopFillZerobss:
   ldr r1, =_edata
  8004430:	20000184 	.word	0x20000184
   ldr r2, =_sidata
- 8004434:	08017a60 	.word	0x08017a60
+ 8004434:	08017ad8 	.word	0x08017ad8
   ldr r2, =_sbss
  8004438:	20000184 	.word	0x20000184
   ldr r4, =_ebss
@@ -11937,7 +11937,7 @@ static uint32_t DMA_CalcBaseAndBitshift(DMA_HandleTypeDef *hdma)
  8004db4:	4770      	bx	lr
  8004db6:	bf00      	nop
  8004db8:	aaaaaaab 	.word	0xaaaaaaab
- 8004dbc:	08017968 	.word	0x08017968
+ 8004dbc:	080179e0 	.word	0x080179e0
 
 08004dc0 <DMA_CheckFifoParam>:
   * @param  hdma       pointer to a DMA_HandleTypeDef structure that contains
@@ -36087,7 +36087,7 @@ FRESULT create_name (	/* FR_OK: successful, FR_INVALID_NAME: could not create */
  800d966:	46bd      	mov	sp, r7
  800d968:	bd80      	pop	{r7, pc}
  800d96a:	bf00      	nop
- 800d96c:	08017970 	.word	0x08017970
+ 800d96c:	080179e8 	.word	0x080179e8
  800d970:	08010034 	.word	0x08010034
 
 0800d974 <follow_path>:
@@ -40677,7 +40677,7 @@ USBD_StatusTypeDef USBD_Get_USB_Status(HAL_StatusTypeDef hal_status)
  800f5ac:	f801 5901 	strb.w	r5, [r1], #-1
  800f5b0:	e7f4      	b.n	800f59c <__utoa+0x68>
  800f5b2:	bf00      	nop
- 800f5b4:	080179f0 	.word	0x080179f0
+ 800f5b4:	08017a68 	.word	0x08017a68
 
 0800f5b8 <_vsniprintf_r>:
  800f5b8:	b530      	push	{r4, r5, lr}
@@ -40892,10 +40892,10 @@ USBD_StatusTypeDef USBD_Get_USB_Status(HAL_StatusTypeDef hal_status)
  800f772:	4798      	blx	r3
  800f774:	3601      	adds	r6, #1
  800f776:	e7f2      	b.n	800f75e <__libc_init_array+0x1e>
- 800f778:	08017a50 	.word	0x08017a50
- 800f77c:	08017a50 	.word	0x08017a50
- 800f780:	08017a50 	.word	0x08017a50
- 800f784:	08017a5c 	.word	0x08017a5c
+ 800f778:	08017ac8 	.word	0x08017ac8
+ 800f77c:	08017ac8 	.word	0x08017ac8
+ 800f780:	08017ac8 	.word	0x08017ac8
+ 800f784:	08017ad4 	.word	0x08017ad4
 
 0800f788 <__retarget_lock_acquire_recursive>:
  800f788:	4770      	bx	lr
@@ -41262,11 +41262,11 @@ USBD_StatusTypeDef USBD_Get_USB_Status(HAL_StatusTypeDef hal_status)
  800fad0:	4638      	mov	r0, r7
  800fad2:	f000 f879 	bl	800fbc8 <_printf_i>
  800fad6:	e7ed      	b.n	800fab4 <_svfiprintf_r+0x1c0>
- 800fad8:	08017a15 	.word	0x08017a15
- 800fadc:	08017a1f 	.word	0x08017a1f
+ 800fad8:	08017a8d 	.word	0x08017a8d
+ 800fadc:	08017a97 	.word	0x08017a97
  800fae0:	00000000 	.word	0x00000000
  800fae4:	0800f83d 	.word	0x0800f83d
- 800fae8:	08017a1b 	.word	0x08017a1b
+ 800fae8:	08017a93 	.word	0x08017a93
 
 0800faec <_printf_common>:
  800faec:	e92d 47f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
@@ -41595,8 +41595,8 @@ USBD_StatusTypeDef USBD_Get_USB_Status(HAL_StatusTypeDef hal_status)
  800fdf4:	2500      	movs	r5, #0
  800fdf6:	f104 0619 	add.w	r6, r4, #25
  800fdfa:	e7f5      	b.n	800fde8 <_printf_i+0x220>
- 800fdfc:	08017a26 	.word	0x08017a26
- 800fe00:	08017a37 	.word	0x08017a37
+ 800fdfc:	08017a9e 	.word	0x08017a9e
+ 800fe00:	08017aaf 	.word	0x08017aaf
 
 0800fe04 <memmove>:
  800fe04:	4288      	cmp	r0, r1
