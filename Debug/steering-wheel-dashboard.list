@@ -7,23 +7,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   1 .text         000100f0  080001a0  080001a0  000011a0  2**4
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00007c28  08010290  08010290  00011290  2**2
+  2 .rodata       00007c5c  08010290  08010290  00011290  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  08017eb8  08017eb8  00019188  2**0
+  3 .ARM.extab    00000000  08017eec  08017eec  00019188  2**0
                   CONTENTS
-  4 .ARM          00000008  08017eb8  08017eb8  00018eb8  2**2
+  4 .ARM          00000008  08017eec  08017eec  00018eec  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  5 .preinit_array 00000000  08017ec0  08017ec0  00019188  2**0
+  5 .preinit_array 00000000  08017ef4  08017ef4  00019188  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   0000000c  08017ec0  08017ec0  00018ec0  2**2
+  6 .init_array   0000000c  08017ef4  08017ef4  00018ef4  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  7 .fini_array   00000004  08017ecc  08017ecc  00018ecc  2**2
+  7 .fini_array   00000004  08017f00  08017f00  00018f00  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  8 .data         00000188  20000000  08017ed0  00019000  2**2
+  8 .data         00000188  20000000  08017f04  00019000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          000017f4  20000188  08018058  00019188  2**2
+  9 .bss          000017f8  20000188  0801808c  00019188  2**2
                   ALLOC
- 10 ._user_heap_stack 00000604  2000197c  08018058  0001997c  2**0
+ 10 ._user_heap_stack 00000600  20001980  0801808c  00019980  2**0
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  00019188  2**0
                   CONTENTS, READONLY
@@ -37,15 +37,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  00020552  00000000  00000000  00046390  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00027749  00000000  00000000  000668e2  2**0
+ 17 .debug_line   0002774e  00000000  00000000  000668e2  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0009abec  00000000  00000000  0008e02b  2**0
+ 18 .debug_str    0009abec  00000000  00000000  0008e030  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  00128c17  2**0
+ 19 .comment      00000043  00000000  00000000  00128c1c  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00008140  00000000  00000000  00128c5c  2**2
+ 20 .debug_frame  00008140  00000000  00000000  00128c60  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000074  00000000  00000000  00130d9c  2**0
+ 21 .debug_line_str 00000074  00000000  00000000  00130da0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -4736,7 +4736,7 @@ void OTG_FS_IRQHandler(void)
  800209a:	bf00      	nop
  800209c:	bd80      	pop	{r7, pc}
  800209e:	bf00      	nop
- 80020a0:	2000112c 	.word	0x2000112c
+ 80020a0:	20001130 	.word	0x20001130
 
 080020a4 <_getpid>:
 void initialise_monitor_handles()
@@ -8380,7 +8380,7 @@ void domainscreen() {
 }
  8003a7c:	bf00      	nop
  8003a7e:	bd80      	pop	{r7, pc}
- 8003a80:	200003f8 	.word	0x200003f8
+ 8003a80:	200003fc 	.word	0x200003fc
  8003a84:	200003d4 	.word	0x200003d4
 
 08003a88 <_Z41__static_initialization_and_destruction_0ii>:
@@ -8569,7 +8569,7 @@ void dosplashscene() {
 };
  8003c10:	4b20      	ldr	r3, [pc, #128]	@ (8003c94 <_Z41__static_initialization_and_destruction_0ii+0x20c>)
  8003c12:	61dc      	str	r4, [r3, #28]
-		new OutlineRectObject(190, 250, 260, 55, 0xFFFF, NO_CENTER_OBJECT, 9)
+		new OutlineRectObject(190, 250, 260, 55, 0xFFFF, NO_CENTER_OBJECT, 9),
  8003c14:	2014      	movs	r0, #20
  8003c16:	f00b fd7b 	bl	800f710 <_Znwj>
  8003c1a:	4603      	mov	r3, r0
@@ -8636,14 +8636,14 @@ Scene splashScene(splashobjects, 1);
  8003ca4:	2000000c 	.word	0x2000000c
  8003ca8:	08017b60 	.word	0x08017b60
  8003cac:	20000020 	.word	0x20000020
- 8003cb0:	08017dc0 	.word	0x08017dc0
+ 8003cb0:	08017df4 	.word	0x08017df4
  8003cb4:	20000024 	.word	0x20000024
  8003cb8:	200003ac 	.word	0x200003ac
  8003cbc:	20000008 	.word	0x20000008
- 8003cc0:	200003f8 	.word	0x200003f8
+ 8003cc0:	200003fc 	.word	0x200003fc
  8003cc4:	20000028 	.word	0x20000028
- 8003cc8:	20000400 	.word	0x20000400
- 8003ccc:	20000404 	.word	0x20000404
+ 8003cc8:	20000404 	.word	0x20000404
+ 8003ccc:	20000408 	.word	0x20000408
 
 08003cd0 <_GLOBAL__sub_I_epd_bitmap_allArray>:
  8003cd0:	b580      	push	{r7, lr}
@@ -10475,7 +10475,7 @@ MCP2515::ERROR MCP2515::readMessage(const RXBn rxbn, struct can_frame *frame)
  8004766:	3720      	adds	r7, #32
  8004768:	46bd      	mov	sp, r7
  800476a:	bd80      	pop	{r7, pc}
- 800476c:	08017dd0 	.word	0x08017dd0
+ 800476c:	08017e04 	.word	0x08017e04
 
 08004770 <_ZN7MCP251511readMessageEP9can_frame>:
 
@@ -10620,11 +10620,11 @@ LoopFillZerobss:
   ldr r1, =_edata
  8004808:	20000188 	.word	0x20000188
   ldr r2, =_sidata
- 800480c:	08017ed0 	.word	0x08017ed0
+ 800480c:	08017f04 	.word	0x08017f04
   ldr r2, =_sbss
  8004810:	20000188 	.word	0x20000188
   ldr r4, =_ebss
- 8004814:	2000197c 	.word	0x2000197c
+ 8004814:	20001980 	.word	0x20001980
 
 08004818 <ADC_IRQHandler>:
  * @retval None       
@@ -10787,7 +10787,7 @@ __weak void HAL_IncTick(void)
  80048dc:	4770      	bx	lr
  80048de:	bf00      	nop
  80048e0:	20000030 	.word	0x20000030
- 80048e4:	2000040c 	.word	0x2000040c
+ 80048e4:	20000410 	.word	0x20000410
 
 080048e8 <HAL_GetTick>:
   * @note This function is declared as __weak to be overwritten in case of other 
@@ -10807,7 +10807,7 @@ __weak uint32_t HAL_GetTick(void)
  80048f4:	f85d 7b04 	ldr.w	r7, [sp], #4
  80048f8:	4770      	bx	lr
  80048fa:	bf00      	nop
- 80048fc:	2000040c 	.word	0x2000040c
+ 80048fc:	20000410 	.word	0x20000410
 
 08004900 <HAL_Delay>:
   *       implementations in user file.
@@ -12452,7 +12452,7 @@ static uint32_t DMA_CalcBaseAndBitshift(DMA_HandleTypeDef *hdma)
  800518c:	4770      	bx	lr
  800518e:	bf00      	nop
  8005190:	aaaaaaab 	.word	0xaaaaaaab
- 8005194:	08017dd8 	.word	0x08017dd8
+ 8005194:	08017e0c 	.word	0x08017e0c
 
 08005198 <DMA_CheckFifoParam>:
   * @param  hdma       pointer to a DMA_HandleTypeDef structure that contains
@@ -27445,9 +27445,9 @@ void MX_FATFS_Init(void)
 }
  800a97c:	bf00      	nop
  800a97e:	bd80      	pop	{r7, pc}
- 800a980:	20000414 	.word	0x20000414
+ 800a980:	20000418 	.word	0x20000418
  800a984:	20000034 	.word	0x20000034
- 800a988:	20000410 	.word	0x20000410
+ 800a988:	20000414 	.word	0x20000414
 
 0800a98c <get_fattime>:
   * @brief  Gets Time from RTC
@@ -32590,7 +32590,7 @@ static USBD_StatusTypeDef USBD_SetConfig(USBD_HandleTypeDef *pdev, USBD_SetupReq
  800c60a:	46bd      	mov	sp, r7
  800c60c:	bd80      	pop	{r7, pc}
  800c60e:	bf00      	nop
- 800c610:	20000418 	.word	0x20000418
+ 800c610:	2000041c 	.word	0x2000041c
 
 0800c614 <USBD_GetConfig>:
   * @param  pdev: device instance
@@ -33390,7 +33390,7 @@ DSTATUS disk_status (
  800ca16:	3710      	adds	r7, #16
  800ca18:	46bd      	mov	sp, r7
  800ca1a:	bd80      	pop	{r7, pc}
- 800ca1c:	20000444 	.word	0x20000444
+ 800ca1c:	20000448 	.word	0x20000448
 
 0800ca20 <disk_initialize>:
   * @retval DSTATUS: Operation status
@@ -33449,7 +33449,7 @@ DSTATUS disk_initialize (
  800ca66:	3710      	adds	r7, #16
  800ca68:	46bd      	mov	sp, r7
  800ca6a:	bd80      	pop	{r7, pc}
- 800ca6c:	20000444 	.word	0x20000444
+ 800ca6c:	20000448 	.word	0x20000448
 
 0800ca70 <disk_read>:
 	BYTE pdrv,		/* Physical drive nmuber to identify the drive */
@@ -33493,7 +33493,7 @@ DSTATUS disk_initialize (
  800caa6:	46bd      	mov	sp, r7
  800caa8:	bd90      	pop	{r4, r7, pc}
  800caaa:	bf00      	nop
- 800caac:	20000444 	.word	0x20000444
+ 800caac:	20000448 	.word	0x20000448
 
 0800cab0 <disk_write>:
 	BYTE pdrv,		/* Physical drive nmuber to identify the drive */
@@ -33537,7 +33537,7 @@ DSTATUS disk_initialize (
  800cae6:	46bd      	mov	sp, r7
  800cae8:	bd90      	pop	{r4, r7, pc}
  800caea:	bf00      	nop
- 800caec:	20000444 	.word	0x20000444
+ 800caec:	20000448 	.word	0x20000448
 
 0800caf0 <disk_ioctl>:
 DRESULT disk_ioctl (
@@ -33579,7 +33579,7 @@ DRESULT disk_ioctl (
  800cb22:	3710      	adds	r7, #16
  800cb24:	46bd      	mov	sp, r7
  800cb26:	bd80      	pop	{r7, pc}
- 800cb28:	20000444 	.word	0x20000444
+ 800cb28:	20000448 	.word	0x20000448
 
 0800cb2c <ld_word>:
 /* Load/Store multi-byte word in the FAT structure                       */
@@ -34050,7 +34050,7 @@ FRESULT chk_lock (	/* Check if the file can be accessed */
  800cdd8:	f85d 7b04 	ldr.w	r7, [sp], #4
  800cddc:	4770      	bx	lr
  800cdde:	bf00      	nop
- 800cde0:	20000424 	.word	0x20000424
+ 800cde0:	20000428 	.word	0x20000428
 
 0800cde4 <enq_lock>:
 
@@ -34094,7 +34094,7 @@ int enq_lock (void)	/* Check if an entry is available for a new object */
  800ce1c:	f85d 7b04 	ldr.w	r7, [sp], #4
  800ce20:	4770      	bx	lr
  800ce22:	bf00      	nop
- 800ce24:	20000424 	.word	0x20000424
+ 800ce24:	20000428 	.word	0x20000428
 
 0800ce28 <inc_lock>:
 static
@@ -34269,7 +34269,7 @@ UINT inc_lock (	/* Increment object open counter and returns its index (0:Intern
  800cf38:	46bd      	mov	sp, r7
  800cf3a:	f85d 7b04 	ldr.w	r7, [sp], #4
  800cf3e:	4770      	bx	lr
- 800cf40:	20000424 	.word	0x20000424
+ 800cf40:	20000428 	.word	0x20000428
 
 0800cf44 <dec_lock>:
 
@@ -34350,7 +34350,7 @@ FRESULT dec_lock (	/* Decrement object open counter */
  800cfb0:	f85d 7b04 	ldr.w	r7, [sp], #4
  800cfb4:	4770      	bx	lr
  800cfb6:	bf00      	nop
- 800cfb8:	20000424 	.word	0x20000424
+ 800cfb8:	20000428 	.word	0x20000428
 
 0800cfbc <clear_lock>:
 
@@ -34399,7 +34399,7 @@ void clear_lock (	/* Clear lock entries of the volume */
  800cff8:	46bd      	mov	sp, r7
  800cffa:	f85d 7b04 	ldr.w	r7, [sp], #4
  800cffe:	4770      	bx	lr
- 800d000:	20000424 	.word	0x20000424
+ 800d000:	20000428 	.word	0x20000428
 
 0800d004 <sync_window>:
 #if !_FS_READONLY
@@ -36604,7 +36604,7 @@ FRESULT create_name (	/* FR_OK: successful, FR_INVALID_NAME: could not create */
  800dd3a:	46bd      	mov	sp, r7
  800dd3c:	bd80      	pop	{r7, pc}
  800dd3e:	bf00      	nop
- 800dd40:	08017de0 	.word	0x08017de0
+ 800dd40:	08017e14 	.word	0x08017e14
  800dd44:	08010418 	.word	0x08010418
 
 0800dd48 <follow_path>:
@@ -37375,7 +37375,7 @@ FRESULT find_volume (	/* FR_OK(0): successful, !=0: any error occurred */
  800e206:	230d      	movs	r3, #13
  800e208:	e0eb      	b.n	800e3e2 <find_volume+0x482>
  800e20a:	bf00      	nop
- 800e20c:	2000041c 	.word	0x2000041c
+ 800e20c:	20000420 	.word	0x20000420
 		nclst = (tsect - sysect) / fs->csize;			/* Number of clusters */
  800e210:	6cba      	ldr	r2, [r7, #72]	@ 0x48
  800e212:	6abb      	ldr	r3, [r7, #40]	@ 0x28
@@ -37648,7 +37648,7 @@ FRESULT find_volume (	/* FR_OK(0): successful, !=0: any error occurred */
  800e3ea:	bf00      	nop
  800e3ec:	41615252 	.word	0x41615252
  800e3f0:	61417272 	.word	0x61417272
- 800e3f4:	20000420 	.word	0x20000420
+ 800e3f4:	20000424 	.word	0x20000424
 
 0800e3f8 <validate>:
 static
@@ -37828,7 +37828,7 @@ FRESULT f_mount (
  800e4e6:	3720      	adds	r7, #32
  800e4e8:	46bd      	mov	sp, r7
  800e4ea:	bd80      	pop	{r7, pc}
- 800e4ec:	2000041c 	.word	0x2000041c
+ 800e4ec:	20000420 	.word	0x20000420
 
 0800e4f0 <f_open>:
 FRESULT f_open (
@@ -39055,7 +39055,7 @@ uint8_t FATFS_LinkDriverEx(const Diskio_drvTypeDef *drv, char *path, uint8_t lun
  800ecc0:	f85d 7b04 	ldr.w	r7, [sp], #4
  800ecc4:	4770      	bx	lr
  800ecc6:	bf00      	nop
- 800ecc8:	20000444 	.word	0x20000444
+ 800ecc8:	20000448 	.word	0x20000448
 
 0800eccc <FATFS_LinkDriver>:
   * @param  drv: pointer to the disk IO Driver structure
@@ -39148,7 +39148,7 @@ void MX_USB_DEVICE_Init(void)
  800ed38:	bf00      	nop
  800ed3a:	bd80      	pop	{r7, pc}
  800ed3c:	200000e8 	.word	0x200000e8
- 800ed40:	20000450 	.word	0x20000450
+ 800ed40:	20000454 	.word	0x20000454
  800ed44:	20000054 	.word	0x20000054
  800ed48:	200000d4 	.word	0x200000d4
 
@@ -39178,9 +39178,9 @@ static int8_t CDC_Init_FS(void)
 }
  800ed64:	4618      	mov	r0, r3
  800ed66:	bd80      	pop	{r7, pc}
- 800ed68:	20000b2c 	.word	0x20000b2c
- 800ed6c:	20000450 	.word	0x20000450
- 800ed70:	2000072c 	.word	0x2000072c
+ 800ed68:	20000b30 	.word	0x20000b30
+ 800ed6c:	20000454 	.word	0x20000454
+ 800ed70:	20000730 	.word	0x20000730
 
 0800ed74 <CDC_DeInit_FS>:
 /**
@@ -39307,7 +39307,7 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
  800ee5e:	46bd      	mov	sp, r7
  800ee60:	bd80      	pop	{r7, pc}
  800ee62:	bf00      	nop
- 800ee64:	20000450 	.word	0x20000450
+ 800ee64:	20000454 	.word	0x20000454
 
 0800ee68 <CDC_Transmit_FS>:
   * @param  Buf: Buffer of data to be sent
@@ -39359,7 +39359,7 @@ uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len)
  800eeaa:	46bd      	mov	sp, r7
  800eeac:	bd80      	pop	{r7, pc}
  800eeae:	bf00      	nop
- 800eeb0:	20000450 	.word	0x20000450
+ 800eeb0:	20000454 	.word	0x20000454
 
 0800eeb4 <CDC_TransmitCplt_FS>:
   * @param  Buf: Buffer of data to be received
@@ -39490,7 +39490,7 @@ uint8_t * USBD_FS_ProductStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *length
  800ef4e:	46bd      	mov	sp, r7
  800ef50:	bd80      	pop	{r7, pc}
  800ef52:	bf00      	nop
- 800ef54:	20000f2c 	.word	0x20000f2c
+ 800ef54:	20000f30 	.word	0x20000f30
  800ef58:	0801045c 	.word	0x0801045c
 
 0800ef5c <USBD_FS_ManufacturerStrDescriptor>:
@@ -39519,7 +39519,7 @@ uint8_t * USBD_FS_ManufacturerStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *l
  800ef76:	3708      	adds	r7, #8
  800ef78:	46bd      	mov	sp, r7
  800ef7a:	bd80      	pop	{r7, pc}
- 800ef7c:	20000f2c 	.word	0x20000f2c
+ 800ef7c:	20000f30 	.word	0x20000f30
  800ef80:	08010474 	.word	0x08010474
 
 0800ef84 <USBD_FS_SerialStrDescriptor>:
@@ -39598,7 +39598,7 @@ uint8_t * USBD_FS_ConfigStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *length)
  800efd6:	46bd      	mov	sp, r7
  800efd8:	bd80      	pop	{r7, pc}
  800efda:	bf00      	nop
- 800efdc:	20000f2c 	.word	0x20000f2c
+ 800efdc:	20000f30 	.word	0x20000f30
  800efe0:	08010488 	.word	0x08010488
 
 0800efe4 <USBD_FS_InterfaceStrDescriptor>:
@@ -39642,7 +39642,7 @@ uint8_t * USBD_FS_InterfaceStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *leng
  800f012:	46bd      	mov	sp, r7
  800f014:	bd80      	pop	{r7, pc}
  800f016:	bf00      	nop
- 800f018:	20000f2c 	.word	0x20000f2c
+ 800f018:	20000f30 	.word	0x20000f30
  800f01c:	08010494 	.word	0x08010494
 
 0800f020 <Get_SerialNum>:
@@ -40340,7 +40340,7 @@ USBD_StatusTypeDef USBD_LL_Init(USBD_HandleTypeDef *pdev)
  800f3fe:	3708      	adds	r7, #8
  800f400:	46bd      	mov	sp, r7
  800f402:	bd80      	pop	{r7, pc}
- 800f404:	2000112c 	.word	0x2000112c
+ 800f404:	20001130 	.word	0x20001130
 
 0800f408 <USBD_LL_Start>:
   * @brief  Starts the low level portion of the device driver.
@@ -40814,7 +40814,7 @@ void *USBD_static_malloc(uint32_t size)
  800f694:	f85d 7b04 	ldr.w	r7, [sp], #4
  800f698:	4770      	bx	lr
  800f69a:	bf00      	nop
- 800f69c:	20001610 	.word	0x20001610
+ 800f69c:	20001614 	.word	0x20001614
 
 0800f6a0 <USBD_static_free>:
   * @brief  Dummy memory free
@@ -40932,7 +40932,7 @@ USBD_StatusTypeDef USBD_Get_USB_Status(HAL_StatusTypeDef hal_status)
  800f73c:	f3bf 8f5b 	dmb	ish
  800f740:	4770      	bx	lr
  800f742:	bf00      	nop
- 800f744:	20001830 	.word	0x20001830
+ 800f744:	20001834 	.word	0x20001834
 
 0800f748 <abort>:
  800f748:	b508      	push	{r3, lr}
@@ -41014,7 +41014,7 @@ USBD_StatusTypeDef USBD_Get_USB_Status(HAL_StatusTypeDef hal_status)
  800f7e6:	d1f2      	bne.n	800f7ce <sbrk_aligned+0x22>
  800f7e8:	e7ef      	b.n	800f7ca <sbrk_aligned+0x1e>
  800f7ea:	bf00      	nop
- 800f7ec:	20001834 	.word	0x20001834
+ 800f7ec:	20001838 	.word	0x20001838
 
 0800f7f0 <_malloc_r>:
  800f7f0:	e92d 43f8 	stmdb	sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
@@ -41124,19 +41124,19 @@ USBD_StatusTypeDef USBD_Get_USB_Status(HAL_StatusTypeDef hal_status)
  800f8e6:	6005      	str	r5, [r0, #0]
  800f8e8:	e7d6      	b.n	800f898 <_malloc_r+0xa8>
  800f8ea:	bf00      	nop
- 800f8ec:	20001838 	.word	0x20001838
+ 800f8ec:	2000183c 	.word	0x2000183c
 
 0800f8f0 <__malloc_lock>:
  800f8f0:	4801      	ldr	r0, [pc, #4]	@ (800f8f8 <__malloc_lock+0x8>)
  800f8f2:	f000 b931 	b.w	800fb58 <__retarget_lock_acquire_recursive>
  800f8f6:	bf00      	nop
- 800f8f8:	20001978 	.word	0x20001978
+ 800f8f8:	2000197c 	.word	0x2000197c
 
 0800f8fc <__malloc_unlock>:
  800f8fc:	4801      	ldr	r0, [pc, #4]	@ (800f904 <__malloc_unlock+0x8>)
  800f8fe:	f000 b92c 	b.w	800fb5a <__retarget_lock_release_recursive>
  800f902:	bf00      	nop
- 800f904:	20001978 	.word	0x20001978
+ 800f904:	2000197c 	.word	0x2000197c
 
 0800f908 <__utoa>:
  800f908:	b5f0      	push	{r4, r5, r6, r7, lr}
@@ -41194,7 +41194,7 @@ USBD_StatusTypeDef USBD_Get_USB_Status(HAL_StatusTypeDef hal_status)
  800f980:	f801 5901 	strb.w	r5, [r1], #-1
  800f984:	e7f4      	b.n	800f970 <__utoa+0x68>
  800f986:	bf00      	nop
- 800f988:	08017e60 	.word	0x08017e60
+ 800f988:	08017e94 	.word	0x08017e94
 
 0800f98c <_vsniprintf_r>:
  800f98c:	b530      	push	{r4, r5, lr}
@@ -41354,7 +41354,7 @@ USBD_StatusTypeDef USBD_Get_USB_Status(HAL_StatusTypeDef hal_status)
  800fad6:	6023      	str	r3, [r4, #0]
  800fad8:	bd38      	pop	{r3, r4, r5, pc}
  800fada:	bf00      	nop
- 800fadc:	20001974 	.word	0x20001974
+ 800fadc:	20001978 	.word	0x20001978
 
 0800fae0 <_getpid_r>:
  800fae0:	f7f2 bae0 	b.w	80020a4 <_getpid>
@@ -41373,7 +41373,7 @@ USBD_StatusTypeDef USBD_Get_USB_Status(HAL_StatusTypeDef hal_status)
  800fafa:	b103      	cbz	r3, 800fafe <_sbrk_r+0x1a>
  800fafc:	6023      	str	r3, [r4, #0]
  800fafe:	bd38      	pop	{r3, r4, r5, pc}
- 800fb00:	20001974 	.word	0x20001974
+ 800fb00:	20001978 	.word	0x20001978
 
 0800fb04 <__errno>:
  800fb04:	4b01      	ldr	r3, [pc, #4]	@ (800fb0c <__errno+0x8>)
@@ -41408,10 +41408,10 @@ USBD_StatusTypeDef USBD_Get_USB_Status(HAL_StatusTypeDef hal_status)
  800fb42:	4798      	blx	r3
  800fb44:	3601      	adds	r6, #1
  800fb46:	e7f2      	b.n	800fb2e <__libc_init_array+0x1e>
- 800fb48:	08017ec0 	.word	0x08017ec0
- 800fb4c:	08017ec0 	.word	0x08017ec0
- 800fb50:	08017ec0 	.word	0x08017ec0
- 800fb54:	08017ecc 	.word	0x08017ecc
+ 800fb48:	08017ef4 	.word	0x08017ef4
+ 800fb4c:	08017ef4 	.word	0x08017ef4
+ 800fb50:	08017ef4 	.word	0x08017ef4
+ 800fb54:	08017f00 	.word	0x08017f00
 
 0800fb58 <__retarget_lock_acquire_recursive>:
  800fb58:	4770      	bx	lr
@@ -41501,7 +41501,7 @@ USBD_StatusTypeDef USBD_Get_USB_Status(HAL_StatusTypeDef hal_status)
  800fc02:	e7ca      	b.n	800fb9a <_free_r+0x22>
  800fc04:	bd38      	pop	{r3, r4, r5, pc}
  800fc06:	bf00      	nop
- 800fc08:	20001838 	.word	0x20001838
+ 800fc08:	2000183c 	.word	0x2000183c
 
 0800fc0c <__ssputs_r>:
  800fc0c:	e92d 47f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
@@ -41778,11 +41778,11 @@ USBD_StatusTypeDef USBD_Get_USB_Status(HAL_StatusTypeDef hal_status)
  800fea0:	4638      	mov	r0, r7
  800fea2:	f000 f879 	bl	800ff98 <_printf_i>
  800fea6:	e7ed      	b.n	800fe84 <_svfiprintf_r+0x1c0>
- 800fea8:	08017e85 	.word	0x08017e85
- 800feac:	08017e8f 	.word	0x08017e8f
+ 800fea8:	08017eb9 	.word	0x08017eb9
+ 800feac:	08017ec3 	.word	0x08017ec3
  800feb0:	00000000 	.word	0x00000000
  800feb4:	0800fc0d 	.word	0x0800fc0d
- 800feb8:	08017e8b 	.word	0x08017e8b
+ 800feb8:	08017ebf 	.word	0x08017ebf
 
 0800febc <_printf_common>:
  800febc:	e92d 47f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
@@ -42113,8 +42113,8 @@ USBD_StatusTypeDef USBD_Get_USB_Status(HAL_StatusTypeDef hal_status)
  80101c8:	f104 0619 	add.w	r6, r4, #25
  80101cc:	e7f5      	b.n	80101ba <_printf_i+0x222>
  80101ce:	bf00      	nop
- 80101d0:	08017e96 	.word	0x08017e96
- 80101d4:	08017ea7 	.word	0x08017ea7
+ 80101d0:	08017eca 	.word	0x08017eca
+ 80101d4:	08017edb 	.word	0x08017edb
 
 080101d8 <memmove>:
  80101d8:	4288      	cmp	r0, r1

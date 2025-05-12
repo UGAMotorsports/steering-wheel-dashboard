@@ -23,7 +23,7 @@ char gearresult[20] = "8";
 char battresult[20] = "";
 char tempicon[3] = " ";
 char batticon[3] = "\"";
-DisplayObject* otherobjects[9] = {
+DisplayObject* otherobjects[10] = {
 		new StringObject(200, 260, 0xFFFF, FREE_MONO_BOLD_24PT7B, NO_CENTER_OBJECT, rpmresult, 1),
 		new StringObject(350, 100, 0xFFFF, FREE_SANS_18PT7B, CENTER_OBJECT, tempresult, 3),
 		new StringObject(350, 60, 0xFFFF, FREE_SANS_18PT7B, CENTER_OBJECT, battresult, 6),
@@ -32,7 +32,8 @@ DisplayObject* otherobjects[9] = {
 		new StringObject(400, 90, 0xFFFF, ICONFONT, CENTER_OBJECT, batticon, 5),
 		new StringObject(140, 55, 0xFFFF, FREE_SANS_18PT7B, LEFTDRAW_OBJECT, speedresult, 7),
 		new StringObject(440, 288, 0xFFFF, ICONFONT, LEFTDRAW_OBJECT, rpmicon, 8),
-		new OutlineRectObject(190, 250, 260, 55, 0xFFFF, NO_CENTER_OBJECT, 9)
+		new OutlineRectObject(190, 250, 260, 55, 0xFFFF, NO_CENTER_OBJECT, 9),
+		//new StringObject(400, 90, 0xFFFF, ICONFONT, CENTER_OBJECT, batticon, 10)
 };
 Scene myScene2(otherobjects, 6);
 
