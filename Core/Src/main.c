@@ -165,10 +165,12 @@ int main(void)
   char result2[20] = "null";//temp
   char result3[20] = "8";//gear
   char result4[20] = "null"; //battery volt
+  char result5[20] = "null"; //speed
   settempdata(result2);
   setgeardata(result3);
   setrpmdata(result);
   setbattdata(result4);
+  setspeeddata(result5);
   domainscreen();
 
   struct can_frame frame;
@@ -220,17 +222,19 @@ int main(void)
 			  } else if (frame.can_id == 504) {
 				  uint16_t neutrallight = (uint16_t)((frame.data[6] << 8) | (frame.data[7]));
 				  if (neutrallight < 1024) {
-					  setColor(&htim4, TIM_CHANNEL_1, 255, 255, 255, ledcolors, ledbytes, 0);
-					  setColor(&htim4, TIM_CHANNEL_1, 255, 255, 255, ledcolors, ledbytes, 1);
+					  setColor(&htim4, TIM_CHANNEL_1, 128, 255, 0, ledcolors, ledbytes, 0);
 					  strncpy(result3, "7", 10);
 					  setgeardata(result3);
 				  } else {
 					  setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 0);
-					  setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 1);
 					  strncpy(result3, "8", 10);
 					  setgeardata(result3);
 				  }
 				  //USB_Println("the neutral light value is %d\n", neutrallight);
+			  } else if (frame.can_id == 1520) {
+				  uint16_t speed = (uint16_t)((frame.data[0] << 8) | (frame.data[1]));
+				  itoa(speed, (char*) result5, 10);
+				  setspeeddata(result5);
 			  }
 		  }
 	  }

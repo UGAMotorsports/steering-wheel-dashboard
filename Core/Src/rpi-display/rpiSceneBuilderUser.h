@@ -17,6 +17,7 @@ extern "C" {
 	void settempdata(char *tempvalue);
 	void setgeardata(char *gearvalue);
 	void setbattdata(char *battvalue);
+	void setspeeddata(char *speedvalue);
 	void dosplashscene();
 #ifdef __cplusplus
 }

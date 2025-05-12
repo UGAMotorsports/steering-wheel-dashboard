@@ -17,17 +17,19 @@
 
 char rpmresult[17] = "";
 char tempresult[18] = "";
+char speedresult[20] = "";
 char gearresult[20] = "8";
 char battresult[20] = "";
 char tempicon[3] = " ";
 char batticon[3] = "\"";
-DisplayObject* otherobjects[6] = {
+DisplayObject* otherobjects[7] = {
 		new StringObject(420, 260, 0xFFFF, FREE_MONO_BOLD_24PT7B, LEFTDRAW_OBJECT, rpmresult, 1),
 		new StringObject(350, 100, 0xFFFF, FREE_SANS_18PT7B, CENTER_OBJECT, tempresult, 3),
 		new StringObject(350, 60, 0xFFFF, FREE_SANS_18PT7B, CENTER_OBJECT, battresult, 6),
 		new StringObject(100, 240, 0xFFFF, GEARFONT, CENTER_OBJECT, gearresult, 2),
 		new StringObject(395, 130, 0xFFFF, ICONFONT, CENTER_OBJECT, tempicon, 4),
-		new StringObject(400, 90, 0xFFFF, ICONFONT, CENTER_OBJECT, batticon, 5)
+		new StringObject(400, 90, 0xFFFF, ICONFONT, CENTER_OBJECT, batticon, 5),
+		new StringObject(100, 80, 0xFFFF, FREE_SANS_18PT7B, NO_CENTER_OBJECT, speedresult, 7)
 };
 Scene myScene2(otherobjects, 6);
 
@@ -63,9 +65,15 @@ void setbattdata(char *battvalue) {
 	((StringObject*)otherobjects[2])->updateString(battresult, CENTER_OBJECT, 0xFFFF, FREE_SANS_18PT7B, 350, 60, 6);
 }
 
+void setspeeddata(char *speedvalue) {
+	strncpy(speedresult, "", 10);
+	strncat(speedresult, speedvalue, 10);
+	((StringObject*)otherobjects[6])->updateString(speedresult, NO_CENTER_OBJECT, 0xFFFF, FREE_SANS_18PT7B, 100, 80, 7);
+}
+
 void domainscreen() {
 	myScene2.drawScene();
-	myScene2.setScene(otherobjects, 6);
+	myScene2.setScene(otherobjects, 7);
 }
 
 void dosplashscene() {
