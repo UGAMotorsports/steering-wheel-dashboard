@@ -16,6 +16,7 @@ extern "C" {
 	void initializeMCP2515();
 	int sendMessage(struct can_frame*);
 	int readMessage(struct can_frame*);
+	void setFilters();
 #ifdef __cplusplus
 }
 #endif

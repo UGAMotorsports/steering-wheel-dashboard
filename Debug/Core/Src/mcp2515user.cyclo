@@ -1,5 +1,6 @@
 ../Core/Src/mcp2515user.cpp:17:6:void initializeMCP2515()	1
 ../Core/Src/mcp2515user.cpp:23:5:int sendMessage(can_frame*)	1
 ../Core/Src/mcp2515user.cpp:27:5:int readMessage(can_frame*)	1
-../Core/Src/mcp2515user.cpp:29:1:void __static_initialization_and_destruction_0(int, int)	3
-../Core/Src/mcp2515user.cpp:29:1:cpp)	1
+../Core/Src/mcp2515user.cpp:31:6:void setFilters()	1
+../Core/Src/mcp2515user.cpp:43:1:void __static_initialization_and_destruction_0(int, int)	3
+../Core/Src/mcp2515user.cpp:43:1:cpp)	1
