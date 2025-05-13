@@ -140,6 +140,7 @@ int main(void)
   FRESULT fresult = f_mount(&fs, "/", 1);
 
   initializeMCP2515();
+  //setFilters();
   uint8_t ledcolors[3 * 16];
   uint16_t ledbytes[(16 * 24) + 150];
   int G1[12] = {500, 3000, 4000, 5000, 6000, 7000, 8000, 8500, 9000, 9500,
@@ -236,12 +237,13 @@ int main(void)
 					  setgeardata(result3);
 				  } else {
 					  setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 0);
-					  strncpy(result3, "8", 10);
-					  setgeardata(result3);
+					  //strncpy(result3, "8", 10);
+					  //setgeardata(result3);
 				  }
 				  //USB_Println("the neutral light value is %d\n", neutrallight);
-			  } else if (frame.can_id == 1520) {
+			  } else if (frame.can_id == 1520 + 42) {
 				  uint16_t speed = (uint16_t)((frame.data[0] << 8) | (frame.data[1]));
+				  speed /= 10;
 				  itoa(speed, (char*) result5, 10);
 				  setspeeddata(result5);
 			  }
