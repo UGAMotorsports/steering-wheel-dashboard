@@ -75,18 +75,16 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-static struct can_frame mark;
+volatile static int buttonpressed = 0;
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 	if (GPIO_Pin == button1INT_Pin) {
-		USB_Println("button 1 was pressed\n");
+		buttonpressed = 1;
 	} else if (GPIO_Pin == button2INT_Pin) {
-		USB_Println("button 2 was pressed\n");
+		buttonpressed = 2;
 	} else if (GPIO_Pin == button3INT_Pin ) {
-		USB_Println("button 3 was pressed\n");
-		mark.can_id = 601;
-		sendMessage(&mark);
+		buttonpressed = 3;
 	} else if (GPIO_Pin == button4INT_Pin) {
-		USB_Println("button 4 was pressed\n");
+		buttonpressed = 4;
 	} else {
 		USB_Println("unknown button pressed: 0x%x", GPIO_Pin);
 	}
@@ -140,11 +138,6 @@ int main(void)
 
   FATFS fs;
   FRESULT fresult = f_mount(&fs, "/", 1);
-//  if (fresult != FR_OK) {
-//	  USB_Println("There was an error: %d\n", fresult);
-//  } else {
-//	  USB_Println("the sdcard is mounted\n");
-//  }
 
   initializeMCP2515();
   uint8_t ledcolors[3 * 16];
@@ -159,7 +152,12 @@ int main(void)
 
   resetScreen();
   initializeScreen();
-  //dosplashscene();
+  if (fresult != FR_OK) {
+	  USB_Println("There was an error: %d\n", fresult);
+  } else {
+	  USB_Println("the sdcard is mounted\n");
+	  dosplashscene();
+  }
   startUp(&htim4, TIM_CHANNEL_1, ledcolors, ledbytes);
   HAL_Delay(200);
 
@@ -179,6 +177,15 @@ int main(void)
 
   while (1)
   {
+
+	  if (buttonpressed == 3) {
+		  frame.can_id = 601;
+		  sendMessage(&frame);
+		  HAL_Delay(10);
+		  USB_Println("button3 job in while loop done\n");
+		  buttonpressed = 0;
+	  }
+
 	  for (int i = 0; i < 10; i++) {
 		  int canresult = readMessage(&frame);
 		  if (canresult == 0) {
