@@ -144,7 +144,7 @@ int main(void)
   uint8_t ledcolors[3 * 16];
   uint16_t ledbytes[(16 * 24) + 150];
   int G1[12] = {500, 3000, 4000, 5000, 6000, 7000, 8000, 8500, 9000, 9500,
-  10000, 10500};
+  10000, 10200};
   shiftLightsInit(&htim4, TIM_CHANNEL_1, ledcolors, ledbytes);
   setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 0);
   setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 1);
@@ -175,9 +175,12 @@ int main(void)
   domainscreen();
 
   struct can_frame frame;
-
+  uint8_t gear = 8;
+  uint8_t isNeutral = 0;
   while (1)
   {
+<<<<<<< HEAD
+=======
 
 	  if (buttonpressed == 3) {
 		  frame.can_id = 601;
@@ -188,6 +191,7 @@ int main(void)
 	  }
 
 	  for (int i = 0; i < 10; i++) {
+>>>>>>> fcb798a42e1670ba6c87715928d009191fdf6c31
 		  int canresult = readMessage(&frame);
 		  if (canresult == 0) {
 			  if (frame.can_id == (1520 + 0)) {
@@ -196,6 +200,7 @@ int main(void)
 
 				  itoa(rpm, (char*)(result), 10);
 				  setrpmdata(result);
+				  domainscreen();
 			  }
 			  if (frame.can_id == (1520 + 2)) {
 				  uint16_t temp = (((uint16_t)frame.data[6]) << 8) + frame.data[7];
@@ -209,7 +214,7 @@ int main(void)
 				  settempdata(result2);
 			  }
 			  if (frame.can_id == 1520 + 33) {
-				  uint8_t gear = ((uint8_t)frame.data[6]);
+				  gear = ((uint8_t)frame.data[6]);
 				  if (gear != 0) {
 					  //USB_Println("the gear value is %d\n", gear);
 					  itoa(gear, result3, 10);
@@ -232,10 +237,12 @@ int main(void)
 			  } else if (frame.can_id == 504) {
 				  uint16_t neutrallight = (uint16_t)((frame.data[6] << 8) | (frame.data[7]));
 				  if (neutrallight < 1024) {
+					  //isNeutral = 1;
 					  setColor(&htim4, TIM_CHANNEL_1, 128, 255, 0, ledcolors, ledbytes, 0);
 					  strncpy(result3, "7", 10);
 					  setgeardata(result3);
 				  } else {
+					  //isNeutral = 0;
 					  setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 0);
 					  //strncpy(result3, "8", 10);
 					  //setgeardata(result3);
@@ -248,10 +255,17 @@ int main(void)
 				  setspeeddata(result5);
 			  }
 		  }
+	/*
+	  if (l) {
+		  setColor(&htim4, TIM_CHANNEL_1, 128, 255, 0, ledcolors, ledbytes, 14);
+		  l = 0;
+	  } else {
+		  setColor(&htim4, TIM_CHANNEL_1, 0, 0, 0, ledcolors, ledbytes, 14);
+		  l = 1;
 	  }
+	 */
 
-	  domainscreen();
-//	  CDC_Transmit_FS (status, sizeof(status));
+	//	  CDC_Transmit_FS (status, sizeof(status));
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
