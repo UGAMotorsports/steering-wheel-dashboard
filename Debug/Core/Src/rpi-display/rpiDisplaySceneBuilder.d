@@ -2,8 +2,9 @@ Core/Src/rpi-display/rpiDisplaySceneBuilder.o: \
  ../Core/Src/rpi-display/rpiDisplaySceneBuilder.cpp \
  ../Core/Src/rpi-display/rpiDisplaySceneBuilder.h \
  ../Core/Src/rpi-display/rpiDisplayShapes.h \
- ../Core/Src/rpi-display/gfxfont.h \
- ../Core/Src/rpi-display/dmatransmitter.h ../Core/Inc/spi.h \
+ ../Core/Src/rpi-display/gfxfont.h ../FATFS/App/fatfs.h \
+ ../Middlewares/Third_Party/FatFs/src/ff.h \
+ ../Middlewares/Third_Party/FatFs/src/integer.h ../FATFS/Target/ffconf.h \
  ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -34,12 +35,19 @@ Core/Src/rpi-display/rpiDisplaySceneBuilder.o: \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
+ ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
+ ../Middlewares/Third_Party/FatFs/src/diskio.h \
+ ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h \
+ ../Core/Src/rpi-display/dmatransmitter.h ../Core/Inc/spi.h \
+ ../Core/Inc/main.h
 ../Core/Src/rpi-display/rpiDisplaySceneBuilder.h:
 ../Core/Src/rpi-display/rpiDisplayShapes.h:
 ../Core/Src/rpi-display/gfxfont.h:
-../Core/Src/rpi-display/dmatransmitter.h:
-../Core/Inc/spi.h:
+../FATFS/App/fatfs.h:
+../Middlewares/Third_Party/FatFs/src/ff.h:
+../Middlewares/Third_Party/FatFs/src/integer.h:
+../FATFS/Target/ffconf.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -72,3 +80,10 @@ Core/Src/rpi-display/rpiDisplaySceneBuilder.o: \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
+../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h:
+../Middlewares/Third_Party/FatFs/src/diskio.h:
+../Middlewares/Third_Party/FatFs/src/ff.h:
+../FATFS/Target/user_diskio.h:
+../Core/Src/rpi-display/dmatransmitter.h:
+../Core/Inc/spi.h:
+../Core/Inc/main.h:

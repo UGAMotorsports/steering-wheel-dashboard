@@ -9,6 +9,7 @@
 #define SRC_RPI_DISPLAY_RPI_DISPLAY_SHAPES_H_
 
 #include "gfxfont.h"
+#include "fatfs.h"
 #include <stdint.h>
 
 /*
@@ -182,8 +183,7 @@ extern "C" {
 	void drawRectangleFilledIntoFramebuffer(uint16_t x1, uint16_t y1, uint16_t length, uint16_t height, uint16_t color, uint8_t positioning, uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart);
 	uint16_t drawCharIntoFramebuffer(char letter, const GFXfont *font, uint16_t color, uint16_t xpos, uint16_t ypos, uint8_t positioning, uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart);
 	uint16_t drawStringIntoFramebuffer(char* buffer, const GFXfont *font, uint16_t color, uint16_t stringxpos, uint16_t stringypos, uint8_t positioning, uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart);
-	void drawImageIntoFramebuffer(const char* image, uint16_t length, uint16_t height, uint16_t x, uint16_t y, uint8_t positioning, uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart);
-
+	void drawImageIntoFramebuffer(FIL newfile, uint16_t length, uint16_t height, uint16_t x, uint16_t y, uint8_t positioning, uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart);
 	void modifySpace(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);
 	void dataOrRegister(uint8_t data);
 	void startCommand(uint16_t command);
