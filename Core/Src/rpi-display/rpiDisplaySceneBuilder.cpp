@@ -103,6 +103,14 @@ uint8_t DisplayObject::getChangeFlag() {
 	return this->changed;
 }
 
+void DisplayObject::prepareDrawIntoFramebuffer() {
+	return;
+}
+
+void DisplayObject::finishDrawIntoFramebuffer() {
+	return;
+}
+
 /*
  * the following are StringObject method dofinitions
  */

@@ -8,7 +8,7 @@
 #include "sdcardlogging.h"
 
 #include "stm32-hal-mcp2515/CAN.h"
-#include "mcp2515user.h";
+#include "mcp2515user.h"
 
 #include "fatfs.h"
 

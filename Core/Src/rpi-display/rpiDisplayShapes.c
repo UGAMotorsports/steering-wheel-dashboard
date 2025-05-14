@@ -501,13 +501,7 @@ uint16_t drawStringIntoFramebuffer(char* buffer, const GFXfont *font, uint16_t c
 	return font->yAdvance;
 }
 
-void drawImageIntoFramebuffer(const char *image, uint16_t length, uint16_t height, uint16_t x, uint16_t y,
-		uint8_t positioning, uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart) {
-	length = 400;
-	height = 215;
-	if (positioning & CENTER_OBJECT) {
-		 getRectCenter(&x, &y, length, height);
-	}
+void prepareDrawImageIntoFramebuffer(const char *image) {
 	FIL newfile;
 	FRESULT fresult = f_open(&newfile, image, FA_READ);
 	if (fresult == FR_OK) {
@@ -515,23 +509,27 @@ void drawImageIntoFramebuffer(const char *image, uint16_t length, uint16_t heigh
 	} else {
 		USB_Println("failure to open %s\n", image);
 	}
-	uint16_t readbuffer[height];
+}
+
+void drawImageIntoFramebuffer(FIL newfile, uint16_t length, uint16_t height, uint16_t x, uint16_t y,
+		uint8_t positioning, uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart) {
+	if (positioning & CENTER_OBJECT) {
+		 getRectCenter(&x, &y, length, height);
+	}
+	uint16_t readbuffer[1024];
+	f_read(&newfile, (void*)readbuffer, sizeof(readbuffer), &br);
 	unsigned int br = 0;
-	for (int xx = x; xx < x + length; xx++) {
-		f_read(&newfile, (void*)readbuffer, sizeof(readbuffer), &br);
-		if ((xx >= xstart) & (xx < (xstart + framewidth))) {
-			for (int i = 0; i < height; i++) {
-				//USB_Println("writing to screen, x:%d, y:%d\n",xx, y + i);
-				int coordinate = ((xx - xstart) * SCREEN_HEIGHT) + y + i;
-				char whatbuffer[20];
-				itoa(coordinate, whatbuffer, 10);
-				strncat(whatbuffer, "\n", 10);
-				CDC_Transmit_FS((uint8_t*)whatbuffer, strlen(whatbuffer));
-				framebuffer[(xx - xstart) * SCREEN_HEIGHT + y + i] = readbuffer[i];
+	int i = 0;
+	for (int xx = xstart; xx < xstart + framewidth; xx++) {
+		if ((xx >= x) && (xx < (x + length))) {
+			for (int yy = 0; yy < SCREEN_HEIGHT; yy++) {
+				if ((yy >= y) && (yy < (y + height))) {
+					framebuffer[(xx - xstart) * SCREEN_HEIGHT + yy] = readbuffer[i++];
+					if (i > br) {
+						f_read(&newfile, (void*)readbuffer, sizeof(readbuffer), &br);
+					}
+				}
 			}
-		}
-		if (xx > (xstart + framewidth)) {
-			break;
 		}
 	}
 	f_close(&newfile);

@@ -14,7 +14,9 @@
 class DisplayObject {
 public:
 	virtual ~DisplayObject();
+	void prepareDrawIntoFramebuffer();
 	virtual uint16_t drawIntoFramebuffer(uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart) = 0;
+	void finishDrawIntoFramebuffer();
 	void redrawObject();
 	void resetChangeFlag();
 	void setxpos(uint16_t xpos);
