@@ -1,6 +1,8 @@
-Core/Src/mcp2515user.o: ../Core/Src/mcp2515user.cpp \
- ../Core/Src/mcp2515user.h ../Core/Src/stm32-hal-mcp2515/CAN.h \
- ../Core/Src/stm32-hal-mcp2515/mcp2515.h ../Core/Inc/spi.h \
+Core/Src/sdcardlogging.o: ../Core/Src/sdcardlogging.c \
+ ../Core/Src/sdcardlogging.h ../Core/Src/stm32-hal-mcp2515/CAN.h \
+ ../Core/Src/mcp2515user.h ../FATFS/App/fatfs.h \
+ ../Middlewares/Third_Party/FatFs/src/ff.h \
+ ../Middlewares/Third_Party/FatFs/src/integer.h ../FATFS/Target/ffconf.h \
  ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -32,11 +34,16 @@ Core/Src/mcp2515user.o: ../Core/Src/mcp2515user.cpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
- ../Core/Src/stm32-hal-mcp2515/CAN.h ../Core/Inc/gpio.h
-../Core/Src/mcp2515user.h:
+ ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
+ ../Middlewares/Third_Party/FatFs/src/diskio.h \
+ ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h
+../Core/Src/sdcardlogging.h:
 ../Core/Src/stm32-hal-mcp2515/CAN.h:
-../Core/Src/stm32-hal-mcp2515/mcp2515.h:
-../Core/Inc/spi.h:
+../Core/Src/mcp2515user.h:
+../FATFS/App/fatfs.h:
+../Middlewares/Third_Party/FatFs/src/ff.h:
+../Middlewares/Third_Party/FatFs/src/integer.h:
+../FATFS/Target/ffconf.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -69,5 +76,7 @@ Core/Src/mcp2515user.o: ../Core/Src/mcp2515user.cpp \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h:
-../Core/Src/stm32-hal-mcp2515/CAN.h:
-../Core/Inc/gpio.h:
+../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h:
+../Middlewares/Third_Party/FatFs/src/diskio.h:
+../Middlewares/Third_Party/FatFs/src/ff.h:
+../FATFS/Target/user_diskio.h:
