@@ -291,7 +291,7 @@ ImageObject::ImageObject(char* image, uint16_t length, uint16_t height, uint16_t
 }
 
 uint16_t ImageObject::drawIntoFramebuffer(uint16_t *framebuffer, uint16_t framewidth, uint16_t xstart) {
-	drawImageIntoFramebuffer(this->image, this->length, this->height, this->getxpos(), this->getypos(), this->positioning, framebuffer, framewidth, xstart);
+	drawImageIntoFramebuffer(this->imagefile, this->length, this->height, this->getxpos(), this->getypos(), this->positioning, framebuffer, framewidth, xstart);
 	return 0;
 }
 

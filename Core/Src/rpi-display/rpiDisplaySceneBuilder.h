@@ -10,6 +10,7 @@
 
 #include <stdint.h>
 #include "rpiDisplayShapes.h"
+#include "fatfs.h"
 
 class DisplayObject {
 public:
@@ -125,6 +126,7 @@ private:
 	uint16_t height;
 	uint8_t positioning;
 	char *image;
+	FIL imagefile;
 };
 
 #endif /* SRC_RPI_DISPLAY_RPIDISPLAYSCENEBUILDER_H_ */

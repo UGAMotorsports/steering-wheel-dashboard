@@ -497,7 +497,6 @@ uint16_t drawStringIntoFramebuffer(char* buffer, const GFXfont *font, uint16_t c
 			break;
 		}
 		xAdvance += drawCharIntoFramebuffer(buffer[i], font, color, stringxpos + xAdvance, stringypos, NO_CENTER_OBJECT, framebuffer, framewidth, xstart);
-		if ((stringxpos))
 	}
 	return font->yAdvance;
 }
@@ -518,8 +517,8 @@ void drawImageIntoFramebuffer(FIL newfile, uint16_t length, uint16_t height, uin
 		 getRectCenter(&x, &y, length, height);
 	}
 	uint16_t readbuffer[1024];
-	f_read(&newfile, (void*)readbuffer, sizeof(readbuffer), &br);
 	unsigned int br = 0;
+	f_read(&newfile, (void*)readbuffer, sizeof(readbuffer), &br);
 	int i = 0;
 	for (int xx = xstart; xx < xstart + framewidth; xx++) {
 		if ((xx >= x) && (xx < (x + length))) {

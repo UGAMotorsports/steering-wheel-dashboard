@@ -179,8 +179,6 @@ int main(void)
   uint8_t isNeutral = 0;
   while (1)
   {
-<<<<<<< HEAD
-=======
 
 	  if (buttonpressed == 3) {
 		  frame.can_id = 601;
@@ -190,8 +188,7 @@ int main(void)
 		  buttonpressed = 0;
 	  }
 
-	  for (int i = 0; i < 10; i++) {
->>>>>>> fcb798a42e1670ba6c87715928d009191fdf6c31
+	  //for (int i = 0; i < 10; i++) {
 		  int canresult = readMessage(&frame);
 		  if (canresult == 0) {
 			  if (frame.can_id == (1520 + 0)) {
