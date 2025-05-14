@@ -36,5 +36,5 @@
 ../Core/Src/rpi-display/rpiDisplayShapes.c:439:10:drawCharIntoFramebuffer	56	static
 ../Core/Src/rpi-display/rpiDisplayShapes.c:471:9:drawString	40	static
 ../Core/Src/rpi-display/rpiDisplayShapes.c:484:10:drawStringIntoFramebuffer	64	static
-../Core/Src/rpi-display/rpiDisplayShapes.c:504:6:prepareDrawImageIntoFramebuffer	584	static
-../Core/Src/rpi-display/rpiDisplayShapes.c:514:6:drawImageIntoFramebuffer	2072	static
+../Core/Src/rpi-display/rpiDisplayShapes.c:508:6:prepareDrawImageIntoFramebuffer	584	static
+../Core/Src/rpi-display/rpiDisplayShapes.c:518:6:drawImageIntoFramebuffer	2072	static

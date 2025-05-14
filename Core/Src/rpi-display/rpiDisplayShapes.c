@@ -496,6 +496,10 @@ uint16_t drawStringIntoFramebuffer(char* buffer, const GFXfont *font, uint16_t c
 			//xAdvance += getCharXadv(buffer[i], font);
 			break;
 		}
+		if ((stringxpos + xAdvance + getCharXadv(buffer[i], font)) < xstart) {
+			xAdvance += getCharXadv(buffer[i], font);
+			continue;
+		}
 		xAdvance += drawCharIntoFramebuffer(buffer[i], font, color, stringxpos + xAdvance, stringypos, NO_CENTER_OBJECT, framebuffer, framewidth, xstart);
 	}
 	return font->yAdvance;
